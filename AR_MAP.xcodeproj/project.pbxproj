@@ -1,0 +1,414 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		141B108A2081C23900CDC7BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B10892081C23900CDC7BB /* AppDelegate.swift */; };
+		141B108C2081C23900CDC7BB /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 141B108B2081C23900CDC7BB /* art.scnassets */; };
+		141B108E2081C23900CDC7BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B108D2081C23900CDC7BB /* ViewController.swift */; };
+		141B10912081C23900CDC7BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141B108F2081C23900CDC7BB /* Main.storyboard */; };
+		141B10932081C23900CDC7BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 141B10922081C23900CDC7BB /* Assets.xcassets */; };
+		141B10962081C23900CDC7BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141B10942081C23900CDC7BB /* LaunchScreen.storyboard */; };
+		141B10A42081F61E00CDC7BB /* SCLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B10A32081F61E00CDC7BB /* SCLocationManager.swift */; };
+		141B10A620821ACC00CDC7BB /* BaseNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B10A520821ACC00CDC7BB /* BaseNode.swift */; };
+		30460D60732DA72AE1F473D8 /* Pods_AR_MAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF021FD9DEAD6899D7AB7EC5 /* Pods_AR_MAP.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		141B10862081C23900CDC7BB /* AR_MAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AR_MAP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		141B10892081C23900CDC7BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		141B108B2081C23900CDC7BB /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		141B108D2081C23900CDC7BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		141B10902081C23900CDC7BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		141B10922081C23900CDC7BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		141B10952081C23900CDC7BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		141B10972081C23900CDC7BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		141B109F2081F58100CDC7BB /* AR_MAP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AR_MAP-Bridging-Header.h"; sourceTree = "<group>"; };
+		141B10A32081F61E00CDC7BB /* SCLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLocationManager.swift; sourceTree = "<group>"; };
+		141B10A520821ACC00CDC7BB /* BaseNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNode.swift; sourceTree = "<group>"; };
+		CF021FD9DEAD6899D7AB7EC5 /* Pods_AR_MAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AR_MAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0BA766339C7731B117F185F /* Pods-AR_MAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR_MAP.release.xcconfig"; path = "Pods/Target Support Files/Pods-AR_MAP/Pods-AR_MAP.release.xcconfig"; sourceTree = "<group>"; };
+		DA3130AE3384F2B0F63D8009 /* Pods-AR_MAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR_MAP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AR_MAP/Pods-AR_MAP.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		141B10832081C23900CDC7BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30460D60732DA72AE1F473D8 /* Pods_AR_MAP.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		141B107D2081C23900CDC7BB = {
+			isa = PBXGroup;
+			children = (
+				141B10882081C23900CDC7BB /* AR_MAP */,
+				141B10872081C23900CDC7BB /* Products */,
+				B7E0A86429E4122E9FFCCBBD /* Pods */,
+				BB9F89EE721DC932DCCB5357 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		141B10872081C23900CDC7BB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				141B10862081C23900CDC7BB /* AR_MAP.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		141B10882081C23900CDC7BB /* AR_MAP */ = {
+			isa = PBXGroup;
+			children = (
+				141B109F2081F58100CDC7BB /* AR_MAP-Bridging-Header.h */,
+				141B10A32081F61E00CDC7BB /* SCLocationManager.swift */,
+				141B10A520821ACC00CDC7BB /* BaseNode.swift */,
+				141B10892081C23900CDC7BB /* AppDelegate.swift */,
+				141B108D2081C23900CDC7BB /* ViewController.swift */,
+				141B108F2081C23900CDC7BB /* Main.storyboard */,
+				141B10922081C23900CDC7BB /* Assets.xcassets */,
+				141B10942081C23900CDC7BB /* LaunchScreen.storyboard */,
+				141B10972081C23900CDC7BB /* Info.plist */,
+				141B108B2081C23900CDC7BB /* art.scnassets */,
+			);
+			path = AR_MAP;
+			sourceTree = "<group>";
+		};
+		B7E0A86429E4122E9FFCCBBD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DA3130AE3384F2B0F63D8009 /* Pods-AR_MAP.debug.xcconfig */,
+				D0BA766339C7731B117F185F /* Pods-AR_MAP.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BB9F89EE721DC932DCCB5357 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF021FD9DEAD6899D7AB7EC5 /* Pods_AR_MAP.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		141B10852081C23900CDC7BB /* AR_MAP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 141B109A2081C23900CDC7BB /* Build configuration list for PBXNativeTarget "AR_MAP" */;
+			buildPhases = (
+				0547521843239EC677088458 /* [CP] Check Pods Manifest.lock */,
+				141B10822081C23900CDC7BB /* Sources */,
+				141B10832081C23900CDC7BB /* Frameworks */,
+				141B10842081C23900CDC7BB /* Resources */,
+				D6C707FCBBFF1EF18E729794 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AR_MAP;
+			productName = AR_MAP;
+			productReference = 141B10862081C23900CDC7BB /* AR_MAP.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		141B107E2081C23900CDC7BB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "成";
+				TargetAttributes = {
+					141B10852081C23900CDC7BB = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 141B10812081C23900CDC7BB /* Build configuration list for PBXProject "AR_MAP" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 141B107D2081C23900CDC7BB;
+			productRefGroup = 141B10872081C23900CDC7BB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				141B10852081C23900CDC7BB /* AR_MAP */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		141B10842081C23900CDC7BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				141B108C2081C23900CDC7BB /* art.scnassets in Resources */,
+				141B10962081C23900CDC7BB /* LaunchScreen.storyboard in Resources */,
+				141B10932081C23900CDC7BB /* Assets.xcassets in Resources */,
+				141B10912081C23900CDC7BB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0547521843239EC677088458 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AR_MAP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6C707FCBBFF1EF18E729794 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AR_MAP/Pods-AR_MAP-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AR_MAP/Pods-AR_MAP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		141B10822081C23900CDC7BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				141B108E2081C23900CDC7BB /* ViewController.swift in Sources */,
+				141B10A42081F61E00CDC7BB /* SCLocationManager.swift in Sources */,
+				141B10A620821ACC00CDC7BB /* BaseNode.swift in Sources */,
+				141B108A2081C23900CDC7BB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		141B108F2081C23900CDC7BB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				141B10902081C23900CDC7BB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		141B10942081C23900CDC7BB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				141B10952081C23900CDC7BB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		141B10982081C23900CDC7BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		141B10992081C23900CDC7BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		141B109B2081C23900CDC7BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA3130AE3384F2B0F63D8009 /* Pods-AR_MAP.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4GYQM99B2K;
+				INFOPLIST_FILE = AR_MAP/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cppteam.ios.AR-MAP";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AR_MAP/AR_MAP-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		141B109C2081C23900CDC7BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0BA766339C7731B117F185F /* Pods-AR_MAP.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4GYQM99B2K;
+				INFOPLIST_FILE = AR_MAP/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cppteam.ios.AR-MAP";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AR_MAP/AR_MAP-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		141B10812081C23900CDC7BB /* Build configuration list for PBXProject "AR_MAP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				141B10982081C23900CDC7BB /* Debug */,
+				141B10992081C23900CDC7BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		141B109A2081C23900CDC7BB /* Build configuration list for PBXNativeTarget "AR_MAP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				141B109B2081C23900CDC7BB /* Debug */,
+				141B109C2081C23900CDC7BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 141B107E2081C23900CDC7BB /* Project object */;
+}

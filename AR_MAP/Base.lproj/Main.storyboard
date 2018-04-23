@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1n9-83-WqY">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Ucz-8M-Z8L">
+            <objects>
+                <viewController id="1n9-83-WqY" customClass="ViewController" customModule="AR_MAP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WrZ-20-Xzl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xh0-Hs-2CD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBQ-5B-aZv">
+                                <rect key="frame" x="149" y="607" width="77" height="30"/>
+                                <state key="normal" title="附近的位置"/>
+                                <connections>
+                                    <action selector="searchAroundClick:" destination="1n9-83-WqY" eventType="touchUpInside" id="hFY-hF-JOe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WEn-tS-xUi" firstAttribute="trailing" secondItem="Xh0-Hs-2CD" secondAttribute="trailing" id="6MO-cU-o71"/>
+                            <constraint firstItem="Xh0-Hs-2CD" firstAttribute="leading" secondItem="WEn-tS-xUi" secondAttribute="leading" id="Nnf-gc-RNh"/>
+                            <constraint firstItem="QBQ-5B-aZv" firstAttribute="centerX" secondItem="Xh0-Hs-2CD" secondAttribute="centerX" id="Tnw-eg-gxc"/>
+                            <constraint firstItem="WEn-tS-xUi" firstAttribute="bottom" secondItem="Xh0-Hs-2CD" secondAttribute="bottom" id="YmD-OW-kQN"/>
+                            <constraint firstItem="Xh0-Hs-2CD" firstAttribute="top" secondItem="WrZ-20-Xzl" secondAttribute="top" id="gyR-pg-cac"/>
+                            <constraint firstItem="WEn-tS-xUi" firstAttribute="bottom" secondItem="QBQ-5B-aZv" secondAttribute="bottom" constant="30" id="ykn-CW-zm4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WEn-tS-xUi"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="Xh0-Hs-2CD" id="Hfb-TQ-ogW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TtI-Zz-pVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="103" y="108"/>
+        </scene>
+    </scenes>
+</document>
