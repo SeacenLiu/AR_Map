@@ -29,6 +29,7 @@ class BaseNode: SCNNode {
     
     func addNode() {
 //        let geometry = SCNBox(width: <#T##CGFloat#>, height: <#T##CGFloat#>, length: <#T##CGFloat#>, chamferRadius: <#T##CGFloat#>)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
