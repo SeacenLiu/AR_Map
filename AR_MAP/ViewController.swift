@@ -31,9 +31,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             arr.forEach {
                 print($0.name)
                 print($0.location)
+                print($0.distance)
                 let my = SCLocationManager.shared.myLocation
                 let target = $0.location!
-                let node = SCLocationNode(title: $0.name, location: $0.location)
+                let node = SCLocationNode(title: $0.name, location: $0.location, distance: $0.distance)
                 var x = target.longitude - my.longitude
                 var z = my.latitude - target.latitude
                 x *= 8539 //85390
@@ -54,7 +55,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             }
             SVProgressHUD.dismiss()
             SVProgressHUD.show(withStatus: "定位完成")
-            SVProgressHUD.dismiss()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5, execute: {
+                SVProgressHUD.dismiss()
+            })
         }
     }
     
@@ -143,7 +146,7 @@ extension ViewController {
     }
     
     func demo1() {
-        let node = SCLocationNode(title: "我是一个很长很长的地方名字我是一个很长很长的地方名字", location: AMapGeoPoint())
+        let node = SCLocationNode(title: "我是一个很长很长的地方名字我是一个很长很长的地方名字", location: AMapGeoPoint(), distance: 0)
             
         node.position = SCNVector3(0, 0, -0.5)
         sceneView.scene.rootNode.addChildNode(node)

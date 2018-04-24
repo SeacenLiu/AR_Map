@@ -20,14 +20,14 @@ class SCLocationNode: SCNNode {
     var title: String?
     /// 位置
     var location: AMapGeoPoint!
-    /// 距离
-    var distance: CGFloat?
+    /// 距离(单位: m) 返回的好像有问题
+    var distance: Int?
     /// 贴图
     var image: UIImage?
     /// 锚点
     var anchor: ARAnchor?
     
-    init(title: String, location: AMapGeoPoint) {
+    init(title: String, location: AMapGeoPoint, distance: Int) {
         self.title = title
         super.init()
         // 增加广告牌约束
@@ -90,7 +90,7 @@ class SCLocationNode: SCNNode {
             
             // 要绘制的距离字符串
             // TODO: - 处理距离显示
-            let distanceStr = NSAttributedString(string: "0km", attributes: dic)
+            let distanceStr = NSAttributedString(string: "\(distance)m", attributes: dic)
             let distanceFramesetter = CTFramesetterCreateWithAttributedString(distanceStr)
             let distanceFrame = CTFramesetterCreateFrame(distanceFramesetter, CFRangeMake(0, distanceStr.length), distancePath, nil)
             
