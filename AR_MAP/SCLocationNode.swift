@@ -29,6 +29,7 @@ class SCLocationNode: SCNNode {
     
     init(title: String, location: AMapGeoPoint, distance: Int) {
         self.title = title
+        self.distance = distance
         super.init()
         // 增加广告牌约束
         let billboardConstraint = SCNBillboardConstraint()
@@ -90,7 +91,7 @@ class SCLocationNode: SCNNode {
             
             // 要绘制的距离字符串
             // TODO: - 处理距离显示
-            let distanceStr = NSAttributedString(string: "\(distance)m", attributes: dic)
+            let distanceStr = NSAttributedString(string: "\(distance ?? -1)m", attributes: dic)
             let distanceFramesetter = CTFramesetterCreateWithAttributedString(distanceStr)
             let distanceFrame = CTFramesetterCreateFrame(distanceFramesetter, CFRangeMake(0, distanceStr.length), distancePath, nil)
             
