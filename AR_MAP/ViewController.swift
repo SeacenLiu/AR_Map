@@ -23,19 +23,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     let margin: CGFloat = 0.15
     var index: CGFloat = 0
     
-    @IBOutlet weak var testImage: UIImageView!
-    
 //    var positions: Set<SCNVector3> = Set<SCNVector3>()
     
     func demoShowArround() {
         SVProgressHUD.show(withStatus: "正在定位中...")
         SCLocationManager.shared.arroundSearch { [weak self] (arr) in
-            arr.dropLast(15).forEach {
+            arr.forEach {
                 print($0.name)
                 print($0.location)
                 let my = SCLocationManager.shared.myLocation
                 let target = $0.location!
-                let node = SCLocationNode(title: $0.name, location: CLLocation(latitude: 0, longitude: 0))
+                let node = SCLocationNode(title: $0.name, location: $0.location)
                 var x = target.longitude - my.longitude
                 var z = my.latitude - target.latitude
                 x *= 8539 //85390
@@ -74,7 +72,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapTest(recognizer:)))
         sceneView.addGestureRecognizer(tap)
         
-        demo1()
+        // 用于测试SCLocationNode
+//        demo1()
         
         // 实现代理的添加方法
 //        let anchor = ARAnchor(transform: matrix_float4x4.init())
@@ -144,7 +143,7 @@ extension ViewController {
     }
     
     func demo1() {
-        let node = SCLocationNode(title: "", location: CLLocation())
+        let node = SCLocationNode(title: "我是一个很长很长的地方名字我是一个很长很长的地方名字", location: AMapGeoPoint())
             
         node.position = SCNVector3(0, 0, -0.5)
         sceneView.scene.rootNode.addChildNode(node)

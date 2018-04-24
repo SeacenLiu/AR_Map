@@ -9,17 +9,25 @@
 import SceneKit
 import UIKit
 import ARKit
-import CoreLocation
+//import CoreLocation
+
+let locationNodeH: CGFloat = 0.14
+let locationNodeW: CGFloat = 0.25
 
 class SCLocationNode: SCNNode {
     
+    /// 标题
     var title: String?
-    var anchor: ARAnchor?
-    var location: CLLocation!
-    
+    /// 位置
+    var location: AMapGeoPoint!
+    /// 距离
+    var distance: CGFloat?
+    /// 贴图
     var image: UIImage?
+    /// 锚点
+    var anchor: ARAnchor?
     
-    init(title: String, location: CLLocation) {
+    init(title: String, location: AMapGeoPoint) {
         self.title = title
         super.init()
         // 增加广告牌约束
@@ -27,55 +35,81 @@ class SCLocationNode: SCNNode {
         billboardConstraint.freeAxes = SCNBillboardAxis.Y
         constraints = [billboardConstraint]
         
-        add()
+        setupNode()
 //        addNode(with: 0.1, and: .red, and: title)
     }
     
-    func add() {
-        let rect = CGRect(x: 0, y: 0, width: 250, height: 125)
-        let size = CGSize(width: 250, height: 125)
+    func setupNode() {
+        let rect = CGRect(x: 0, y: 0, width: locationNodeW*1000, height: locationNodeH*1000)
+        let size = CGSize(width: locationNodeW*1000, height: locationNodeH*1000)
         UIGraphicsBeginImageContext(size)
         if let ctx = UIGraphicsGetCurrentContext() {
+            // 位置摆放
+            let locationRect = CGRect(x: 0, y: size.height*0.4, width: size.width, height: size.height*0.5)
+            let distanceRect = CGRect(x: 0, y: -size.height*0.2, width: size.width, height: size.height*0.5)
+            
             // 先来个背景颜色
             ctx.setFillColor(UIColor.clear.cgColor)
             ctx.fill(rect)
+//            ctx.setFillColor(UIColor.red.cgColor)
+//            ctx.fill(locationRect)
+//            ctx.setFillColor(UIColor.blue.cgColor)
+//            ctx.fill(distanceRect)
             
             // 翻转坐标轴
             ctx.textMatrix = CGAffineTransform.identity
             ctx.translateBy(x: 0, y: rect.size.height)
             ctx.scaleBy(x: 1.0, y: -1.0)
+            
             // 创建路径
-            let path = CGMutablePath()
-            path.addRect(rect)
+            let locationPath = CGMutablePath()
+            locationPath.addRect(locationRect)
+            
+            let distancePath = CGMutablePath()
+            distancePath.addRect(distanceRect)
             
             // 居中
             var alignment = CTTextAlignment.center
             let alignmentStyle = CTParagraphStyleSetting(spec: .alignment, valueSize: MemoryLayout.size(ofValue: alignment), value: &alignment)
+            // 换行
+            var breakMode = CTLineBreakMode.byTruncatingTail
+            let breakModeStyle = CTParagraphStyleSetting(spec: .lineBreakMode, valueSize: MemoryLayout.size(ofValue: breakMode), value: &breakMode)
+            // 合并成 paragraphStyle
             let settings = [alignmentStyle]
-            let paragraphStyle = CTParagraphStyleCreate(settings, MemoryLayout.size(ofValue: alignment))
-            
-            // 要绘制的字符串
+            // FIXME: - 有时会崩在这里
+            let numElems = MemoryLayout.size(ofValue: settings) //MemoryLayout.size(ofValue: settings) / MemoryLayout.size(ofValue: settings.first)
+            let paragraphStyle = CTParagraphStyleCreate(settings, numElems)
+            // 属性字典
             let dic = [NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 30),
-                       NSAttributedStringKey.foregroundColor:UIColor.red,
+                       NSAttributedStringKey.foregroundColor:UIColor.black,
                        NSAttributedStringKey.paragraphStyle:paragraphStyle] as [NSAttributedStringKey : Any]
-            let attrString = NSAttributedString(string: self.title ?? "无名地点", attributes: dic)
+            // 要绘制的地点字符串
+            let locationStr = NSAttributedString(string: self.title ?? "无名地点", attributes: dic)
+            let locationFramesetter = CTFramesetterCreateWithAttributedString(locationStr)
+            let locationFrame = CTFramesetterCreateFrame(locationFramesetter, CFRangeMake(0, locationStr.length), locationPath, nil)
             
-            let framesetter = CTFramesetterCreateWithAttributedString(attrString)
-            let frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, attrString.length), path, nil)
+            // 要绘制的距离字符串
+            // TODO: - 处理距离显示
+            let distanceStr = NSAttributedString(string: "0km", attributes: dic)
+            let distanceFramesetter = CTFramesetterCreateWithAttributedString(distanceStr)
+            let distanceFrame = CTFramesetterCreateFrame(distanceFramesetter, CFRangeMake(0, distanceStr.length), distancePath, nil)
+            
             // 绘制
-            CTFrameDraw(frame,ctx)
+            CTFrameDraw(distanceFrame, ctx)
+            CTFrameDraw(locationFrame, ctx)
         }
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
+        
         // 加上背景结点
-        let contentGeometry = SCNPlane(width: 0.25, height: 0.125)
+        let contentGeometry = SCNPlane(width: locationNodeW, height: locationNodeH)
         contentGeometry.firstMaterial?.diffuse.contents = UIColor.white
         contentGeometry.firstMaterial?.transparency = 0.5
         self.geometry = contentGeometry
         
-        let bgGeometr = SCNPlane(width: 0.25, height: 0.125)
+        let bgGeometr = SCNPlane(width: locationNodeW, height: locationNodeH)
         bgGeometr.firstMaterial?.diffuse.contents = image
         let node = SCNNode(geometry: bgGeometr)
         node.position = SCNVector3(0,0,0.001)
