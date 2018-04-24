@@ -27,13 +27,22 @@
                                     <action selector="searchAroundClick:" destination="1n9-83-WqY" eventType="touchUpInside" id="hFY-hF-JOe"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bGT-rt-U0F">
+                                <rect key="frame" x="246" y="20" width="113" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="113" id="5do-0y-X9j"/>
+                                    <constraint firstAttribute="height" constant="63" id="jaZ-cb-nTL"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="WEn-tS-xUi" firstAttribute="trailing" secondItem="bGT-rt-U0F" secondAttribute="trailing" constant="16" id="5dm-vQ-ONp"/>
                             <constraint firstItem="WEn-tS-xUi" firstAttribute="trailing" secondItem="Xh0-Hs-2CD" secondAttribute="trailing" id="6MO-cU-o71"/>
                             <constraint firstItem="Xh0-Hs-2CD" firstAttribute="leading" secondItem="WEn-tS-xUi" secondAttribute="leading" id="Nnf-gc-RNh"/>
                             <constraint firstItem="QBQ-5B-aZv" firstAttribute="centerX" secondItem="Xh0-Hs-2CD" secondAttribute="centerX" id="Tnw-eg-gxc"/>
                             <constraint firstItem="WEn-tS-xUi" firstAttribute="bottom" secondItem="Xh0-Hs-2CD" secondAttribute="bottom" id="YmD-OW-kQN"/>
+                            <constraint firstItem="bGT-rt-U0F" firstAttribute="top" secondItem="WEn-tS-xUi" secondAttribute="top" id="ala-d3-dhv"/>
                             <constraint firstItem="Xh0-Hs-2CD" firstAttribute="top" secondItem="WrZ-20-Xzl" secondAttribute="top" id="gyR-pg-cac"/>
                             <constraint firstItem="WEn-tS-xUi" firstAttribute="bottom" secondItem="QBQ-5B-aZv" secondAttribute="bottom" constant="30" id="ykn-CW-zm4"/>
                         </constraints>
@@ -41,11 +50,12 @@
                     </view>
                     <connections>
                         <outlet property="sceneView" destination="Xh0-Hs-2CD" id="Hfb-TQ-ogW"/>
+                        <outlet property="testImage" destination="bGT-rt-U0F" id="iPO-hQ-43q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TtI-Zz-pVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="103" y="108"/>
+            <point key="canvasLocation" x="101.59999999999999" y="107.49625187406298"/>
         </scene>
     </scenes>
 </document>

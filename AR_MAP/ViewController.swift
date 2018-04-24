@@ -20,8 +20,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         demoShowArround()
     }
     
-    let margin: CGFloat = 1
+    let margin: CGFloat = 0.15
     var index: CGFloat = 0
+    
+    @IBOutlet weak var testImage: UIImageView!
+    
+    var positions: Set<SCNVector3> = Set<SCNVector3>()
     
     func demoShowArround() {
         SVProgressHUD.show(withStatus: "正在定位中...")
@@ -37,6 +41,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 x *= 8539 //85390
                 z *= 11100 //111000
 //                node.position = SCNVector3(x, 0, z)
+                
+                // 等比例缩放
+                let aimDistance: CGFloat = 1.0
+                let curDistance = sqrt(pow(x, 2.0) + pow(z, 2.0))
+                let scaleAC = aimDistance / curDistance
+                x *= scaleAC
+                z *= scaleAC
+                
+                var position = SCNVector3(x, 0.1, z)
+                if !(self?.positions.insert(position).inserted)! {
+                    
+                }
+                
                 node.position = SCNVector3(x, (self?.index)! * (self?.margin)!, z)
                 self?.index += 1
                 print(node.position)
@@ -152,8 +169,11 @@ extension ViewController {
     }
     
     func demo1() {
-        let box = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0);
-        let node = SCNNode(geometry: box)
+//        let box = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0);
+//        let node = SCNNode(geometry: box)
+        
+        let node = BaseNode(title: "", location: CLLocation())
+            
         node.position = SCNVector3(0, 0, -0.5)
         sceneView.scene.rootNode.addChildNode(node)
         
