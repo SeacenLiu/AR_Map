@@ -14,7 +14,7 @@
 		141B10932081C23900CDC7BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 141B10922081C23900CDC7BB /* Assets.xcassets */; };
 		141B10962081C23900CDC7BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141B10942081C23900CDC7BB /* LaunchScreen.storyboard */; };
 		141B10A42081F61E00CDC7BB /* SCLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B10A32081F61E00CDC7BB /* SCLocationManager.swift */; };
-		141B10A620821ACC00CDC7BB /* BaseNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B10A520821ACC00CDC7BB /* BaseNode.swift */; };
+		141B10A620821ACC00CDC7BB /* SCLocationNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B10A520821ACC00CDC7BB /* SCLocationNode.swift */; };
 		145F3A25208E0F39001087A9 /* SCNVector+EX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F3A24208E0F39001087A9 /* SCNVector+EX.swift */; };
 		30460D60732DA72AE1F473D8 /* Pods_AR_MAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF021FD9DEAD6899D7AB7EC5 /* Pods_AR_MAP.framework */; };
 /* End PBXBuildFile section */
@@ -30,7 +30,7 @@
 		141B10972081C23900CDC7BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		141B109F2081F58100CDC7BB /* AR_MAP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AR_MAP-Bridging-Header.h"; sourceTree = "<group>"; };
 		141B10A32081F61E00CDC7BB /* SCLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLocationManager.swift; sourceTree = "<group>"; };
-		141B10A520821ACC00CDC7BB /* BaseNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNode.swift; sourceTree = "<group>"; };
+		141B10A520821ACC00CDC7BB /* SCLocationNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLocationNode.swift; sourceTree = "<group>"; };
 		145F3A24208E0F39001087A9 /* SCNVector+EX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector+EX.swift"; sourceTree = "<group>"; };
 		CF021FD9DEAD6899D7AB7EC5 /* Pods_AR_MAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AR_MAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BA766339C7731B117F185F /* Pods-AR_MAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR_MAP.release.xcconfig"; path = "Pods/Target Support Files/Pods-AR_MAP/Pods-AR_MAP.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 			children = (
 				141B109F2081F58100CDC7BB /* AR_MAP-Bridging-Header.h */,
 				141B10A32081F61E00CDC7BB /* SCLocationManager.swift */,
-				141B10A520821ACC00CDC7BB /* BaseNode.swift */,
+				141B10A520821ACC00CDC7BB /* SCLocationNode.swift */,
 				141B10892081C23900CDC7BB /* AppDelegate.swift */,
 				141B108D2081C23900CDC7BB /* ViewController.swift */,
 				141B108F2081C23900CDC7BB /* Main.storyboard */,
@@ -219,7 +219,7 @@
 			files = (
 				141B108E2081C23900CDC7BB /* ViewController.swift in Sources */,
 				141B10A42081F61E00CDC7BB /* SCLocationManager.swift in Sources */,
-				141B10A620821ACC00CDC7BB /* BaseNode.swift in Sources */,
+				141B10A620821ACC00CDC7BB /* SCLocationNode.swift in Sources */,
 				141B108A2081C23900CDC7BB /* AppDelegate.swift in Sources */,
 				145F3A25208E0F39001087A9 /* SCNVector+EX.swift in Sources */,
 			);
