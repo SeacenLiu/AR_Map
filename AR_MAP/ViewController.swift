@@ -146,7 +146,7 @@ extension ViewController {
     }
     
     func demo1() {
-        let node = SCLocationNode(title: "我是一个很长很长的地方名字我是一个很长很长的地方名字", location: AMapGeoPoint(), distance: 0)
+        let node = SCLocationNode(title: "我是一个很长很长的地方名字名字名字名字名字名字名字", location: AMapGeoPoint(), distance: 0)
             
         node.position = SCNVector3(0, 0, -0.5)
         sceneView.scene.rootNode.addChildNode(node)

@@ -46,16 +46,12 @@ class SCLocationNode: SCNNode {
         UIGraphicsBeginImageContext(size)
         if let ctx = UIGraphicsGetCurrentContext() {
             // 位置摆放
-            let locationRect = CGRect(x: 0, y: size.height*0.4, width: size.width, height: size.height*0.5)
+            let locationRect = CGRect(x: 0, y: size.height*0.3, width: size.width, height: size.height*0.6)
             let distanceRect = CGRect(x: 0, y: -size.height*0.2, width: size.width, height: size.height*0.5)
             
             // 先来个背景颜色
             ctx.setFillColor(UIColor.clear.cgColor)
             ctx.fill(rect)
-//            ctx.setFillColor(UIColor.red.cgColor)
-//            ctx.fill(locationRect)
-//            ctx.setFillColor(UIColor.blue.cgColor)
-//            ctx.fill(distanceRect)
             
             // 翻转坐标轴
             ctx.textMatrix = CGAffineTransform.identity
@@ -69,23 +65,17 @@ class SCLocationNode: SCNNode {
             let distancePath = CGMutablePath()
             distancePath.addRect(distanceRect)
             
-            // 居中
-            var alignment = CTTextAlignment.center
-            let alignmentStyle = CTParagraphStyleSetting(spec: .alignment, valueSize: MemoryLayout.size(ofValue: alignment), value: &alignment)
-            // 换行
-            var breakMode = CTLineBreakMode.byTruncatingTail
-            let breakModeStyle = CTParagraphStyleSetting(spec: .lineBreakMode, valueSize: MemoryLayout.size(ofValue: breakMode), value: &breakMode)
-            // 合并成 paragraphStyle
-            let settings = [alignmentStyle]
-            // FIXME: - 有时会崩在这里
-            let numElems = MemoryLayout.size(ofValue: settings) //MemoryLayout.size(ofValue: settings) / MemoryLayout.size(ofValue: settings.first)
-            let paragraphStyle = CTParagraphStyleCreate(settings, numElems)
+            // 段落样式
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            paragraphStyle.lineBreakMode = .byWordWrapping
+            
             // 属性字典
             let dic = [NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 30),
                        NSAttributedStringKey.foregroundColor:UIColor.black,
-                       NSAttributedStringKey.paragraphStyle:paragraphStyle] as [NSAttributedStringKey : Any]
+                       NSAttributedStringKey.paragraphStyle:paragraphStyle]
             // 要绘制的地点字符串
-            let locationStr = NSAttributedString(string: self.title ?? "无名地点", attributes: dic)
+            let locationStr = NSAttributedString(string: showTitle, attributes: dic)
             let locationFramesetter = CTFramesetterCreateWithAttributedString(locationStr)
             let locationFrame = CTFramesetterCreateFrame(locationFramesetter, CFRangeMake(0, locationStr.length), locationPath, nil)
             
@@ -96,8 +86,8 @@ class SCLocationNode: SCNNode {
             let distanceFrame = CTFramesetterCreateFrame(distanceFramesetter, CFRangeMake(0, distanceStr.length), distancePath, nil)
             
             // 绘制
-            CTFrameDraw(distanceFrame, ctx)
             CTFrameDraw(locationFrame, ctx)
+            CTFrameDraw(distanceFrame, ctx)
         }
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -119,6 +109,20 @@ class SCLocationNode: SCNNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private var showTitle: String {
+        if var title = title {
+            if title.count >= 16 {
+                title = String(title[..<String.Index.init(encodedOffset: 15)])
+                title += "..."
+            }
+//            title.insert("n", at: title.index(title.startIndex, offsetBy: 7))
+            print(title)
+            return title
+        } else {
+            return "未知地点"
+        }
     }
     
 }
