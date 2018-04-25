@@ -23,7 +23,22 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     let margin: CGFloat = 0.15
     var index: CGFloat = 0
     
-//    var positions: Set<SCNVector3> = Set<SCNVector3>()
+    var nodes = [SCNNode]()
+    
+    lazy var configuration: ARWorldTrackingConfiguration = {
+        let cfg = ARWorldTrackingConfiguration()
+        cfg.worldAlignment = .gravityAndHeading
+        return cfg
+    }()
+    
+    @IBAction func resetAR(_ sender: Any) {
+//        sceneView.session.pause()
+//        sceneView.session.run(configuration)
+        nodes.forEach { (node) in
+            node.removeFromParentNode()
+        }
+        nodes = [SCNNode]()
+    }
     
     func demoShowArround() {
         SVProgressHUD.show(withStatus: "正在定位中...")
@@ -52,6 +67,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 self?.index += 1
                 print(node.position)
                 self?.sceneView.scene.rootNode.addChildNode(node)
+                
+                self?.nodes.append(node)
             }
             SVProgressHUD.dismiss()
             SVProgressHUD.show(withStatus: "定位完成")
@@ -104,11 +121,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
-        
-        configuration.worldAlignment = .gravityAndHeading
 
         // Run the view's session
         sceneView.session.run(configuration)
