@@ -79,6 +79,8 @@ class ArroundViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         // Set the view's delegate
         sceneView.delegate = self
         
