@@ -17,6 +17,8 @@ class ShowMapController: UIViewController {
         
         view.addSubview(mapView)
         
+        mapView.delegate = self
+        
         showUserLocation()
 //        showCustomLocation()
         
@@ -26,6 +28,8 @@ class ShowMapController: UIViewController {
         mapView.scaleOrigin = CGPoint(x: 10, y: 10)
         
         mapView.setZoomLevel(17.5, animated: true)
+        
+        addGesture()
     }
     
     // MARK: lazy
@@ -33,9 +37,58 @@ class ShowMapController: UIViewController {
 
 }
 
-extension ShowMapController {
+extension ShowMapController: UIGestureRecognizerDelegate {
+    @objc func longPress(gesture: UITapGestureRecognizer) {
+        if gesture.state == .began {
+            print("began")
+        } else if gesture.state == .changed {
+            print("changed")
+        } else if gesture.state == .ended {
+            print("ended")
+        }
+        if gesture.state == .ended {
+            let touchPoint = gesture.location(in: mapView)
+            let annotation = MAPointAnnotation()
+            let touchMapCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
+            annotation.coordinate = touchMapCoordinate
+            print(touchMapCoordinate)
+            annotation.title = "测试"
+            mapView.addAnnotation(annotation)
+        }
+    }
+    
     private func addGesture() {
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(longPress(gesture:)))
+        tap.delegate = self
+        mapView.addGestureRecognizer(tap)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+}
+
+extension ShowMapController: MAMapViewDelegate {
+    
+    func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
+        if annotation.isKind(of: MAPointAnnotation.self) {
+            let pointReuseIndetifier = "pointReuseIndetifier"
+            var annotationView: MAPinAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: pointReuseIndetifier) as! MAPinAnnotationView?
+            
+            if annotationView == nil {
+                annotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndetifier)
+            }
+            
+            annotationView!.canShowCallout = true
+            annotationView!.animatesDrop = true
+            annotationView!.isDraggable = true
+            annotationView!.rightCalloutAccessoryView = UIButton(type: UIButtonType.detailDisclosure)
+            
+            annotationView!.pinColor = MAPinAnnotationColor(rawValue: 1)!
+            
+            return annotationView!
+        }
+        return nil
     }
 }
 
