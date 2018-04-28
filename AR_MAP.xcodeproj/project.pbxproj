@@ -17,6 +17,7 @@
 		141B10A620821ACC00CDC7BB /* SCLocationNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B10A520821ACC00CDC7BB /* SCLocationNode.swift */; };
 		145F3A25208E0F39001087A9 /* SCNVector+EX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F3A24208E0F39001087A9 /* SCNVector+EX.swift */; };
 		14773BEE2093673A006242C6 /* ArroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14773BED2093673A006242C6 /* ArroundViewController.swift */; };
+		14773BF02094496F006242C6 /* ShowMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14773BEF2094496F006242C6 /* ShowMapController.swift */; };
 		30460D60732DA72AE1F473D8 /* Pods_AR_MAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF021FD9DEAD6899D7AB7EC5 /* Pods_AR_MAP.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		141B10A520821ACC00CDC7BB /* SCLocationNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLocationNode.swift; sourceTree = "<group>"; };
 		145F3A24208E0F39001087A9 /* SCNVector+EX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector+EX.swift"; sourceTree = "<group>"; };
 		14773BED2093673A006242C6 /* ArroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArroundViewController.swift; sourceTree = "<group>"; };
+		14773BEF2094496F006242C6 /* ShowMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapController.swift; sourceTree = "<group>"; };
 		CF021FD9DEAD6899D7AB7EC5 /* Pods_AR_MAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AR_MAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BA766339C7731B117F185F /* Pods-AR_MAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR_MAP.release.xcconfig"; path = "Pods/Target Support Files/Pods-AR_MAP/Pods-AR_MAP.release.xcconfig"; sourceTree = "<group>"; };
 		DA3130AE3384F2B0F63D8009 /* Pods-AR_MAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR_MAP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AR_MAP/Pods-AR_MAP.debug.xcconfig"; sourceTree = "<group>"; };
@@ -77,13 +79,14 @@
 				141B10A520821ACC00CDC7BB /* SCLocationNode.swift */,
 				141B10892081C23900CDC7BB /* AppDelegate.swift */,
 				141B108D2081C23900CDC7BB /* ViewController.swift */,
+				14773BED2093673A006242C6 /* ArroundViewController.swift */,
 				141B108F2081C23900CDC7BB /* Main.storyboard */,
 				141B10922081C23900CDC7BB /* Assets.xcassets */,
 				141B10942081C23900CDC7BB /* LaunchScreen.storyboard */,
 				141B10972081C23900CDC7BB /* Info.plist */,
 				141B108B2081C23900CDC7BB /* art.scnassets */,
 				145F3A24208E0F39001087A9 /* SCNVector+EX.swift */,
-				14773BED2093673A006242C6 /* ArroundViewController.swift */,
+				14773BEF2094496F006242C6 /* ShowMapController.swift */,
 			);
 			path = AR_MAP;
 			sourceTree = "<group>";
@@ -117,6 +120,7 @@
 				141B10832081C23900CDC7BB /* Frameworks */,
 				141B10842081C23900CDC7BB /* Resources */,
 				D6C707FCBBFF1EF18E729794 /* [CP] Embed Pods Frameworks */,
+				221E8604F0BE2F868F0E4034 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -195,6 +199,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		221E8604F0BE2F868F0E4034 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AR_MAP/Pods-AR_MAP-resources.sh",
+				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMap.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AR_MAP/Pods-AR_MAP-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D6C707FCBBFF1EF18E729794 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -224,6 +246,7 @@
 				141B108E2081C23900CDC7BB /* ViewController.swift in Sources */,
 				141B10A42081F61E00CDC7BB /* SCLocationManager.swift in Sources */,
 				141B10A620821ACC00CDC7BB /* SCLocationNode.swift in Sources */,
+				14773BF02094496F006242C6 /* ShowMapController.swift in Sources */,
 				141B108A2081C23900CDC7BB /* AppDelegate.swift in Sources */,
 				145F3A25208E0F39001087A9 /* SCNVector+EX.swift in Sources */,
 			);

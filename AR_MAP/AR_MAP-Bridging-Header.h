@@ -7,3 +7,6 @@
 #import <AMapSearchKit/AMapSearchKit.h>
 
 #import <AMapLocationKit/AMapLocationKit.h>
+
+#import <MAMapKit/MAMapKit.h>
+

@@ -10,6 +10,8 @@ target 'AR_MAP' do
 pod 'AMapSearch'
 pod 'AMapLocation'
 
+pod 'AMap2DMap'
+
 pod 'SVProgressHUD'
 
 end

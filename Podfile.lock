@@ -1,4 +1,6 @@
 PODS:
+  - AMap2DMap (5.6.0):
+    - AMapFoundation (~> 1.4)
   - AMapFoundation (1.4.3)
   - AMapLocation (2.6.0):
     - AMapFoundation (~> 1.4)
@@ -7,23 +9,26 @@ PODS:
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
+  - AMap2DMap
   - AMapLocation
   - AMapSearch
   - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - AMap2DMap
     - AMapFoundation
     - AMapLocation
     - AMapSearch
     - SVProgressHUD
 
 SPEC CHECKSUMS:
+  AMap2DMap: cf0bfd6ae97951b55cc061903b814f924ba6c221
   AMapFoundation: 973682cfe60b92efd73a8ef8f1144fa0fa8e1296
   AMapLocation: 55116a2c8956eab7550cbb56e989aa5cdcc424e3
   AMapSearch: e3f96bd0681abe70abba303709a1a05625a8f76c
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 80b906fc76d43ef1e20518b6302c9ef2c3864194
+PODFILE CHECKSUM: 21a53f9685640913cb9715fcc10e003085d95eff
 
 COCOAPODS: 1.5.0

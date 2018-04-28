@@ -28,6 +28,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6n-1d-5YD">
                                 <rect key="frame" x="142" y="533.5" width="92" height="30"/>
                                 <state key="normal" title="高德地图显示"/>
+                                <connections>
+                                    <segue destination="14Z-oy-Nv5" kind="show" id="ZJR-cR-GHH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -44,6 +47,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qna-DV-abc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-135.19999999999999" y="149.77511244377811"/>
+        </scene>
+        <!--Show Map Controller-->
+        <scene sceneID="pyu-ke-CK0">
+            <objects>
+                <viewController id="14Z-oy-Nv5" customClass="ShowMapController" customModule="AR_MAP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GBa-gA-SWg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="fLP-9r-mGi"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hXh-00-nb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-135" y="893"/>
         </scene>
         <!--Arround View Controller-->
         <scene sceneID="Ucz-8M-Z8L">
