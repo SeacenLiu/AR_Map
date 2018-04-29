@@ -78,7 +78,7 @@ extension ShowMapController: AMapLocationManagerDelegate {
     @objc private func startContinueLocation() {
         SVProgressHUD.showSuccess(withStatus: "开始持续定位")
         SVProgressHUD.dismiss(withDelay: 1)
-        locationManager.startUpdatingHeading()
+        locationManager.startUpdatingLocation()
         endBtn.isEnabled = true
         startBtn.isEnabled = false
     }
@@ -93,6 +93,8 @@ extension ShowMapController: AMapLocationManagerDelegate {
     
     func amapLocationManager(_ manager: AMapLocationManager!, didUpdate location: CLLocation!) {
         print("当前位置: \(location.coordinate.latitude) , \(location.coordinate.longitude)")
+        SVProgressHUD.showSuccess(withStatus: "\(location.coordinate.latitude) , \(location.coordinate.longitude)")
+        SVProgressHUD.dismiss(withDelay: 2)
     }
 }
 
