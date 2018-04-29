@@ -82,6 +82,7 @@ class ShowMapController: UIViewController {
         let btn = UIButton(frame: CGRect(x: 20, y: 300, width: 44, height: 44))
         btn.setTitle("开始追踪", for: .normal)
         btn.setTitleColor(.blue, for: .normal)
+        btn.setTitleColor(.white, for: .disabled)
         btn.sizeToFit()
         return btn
     }()
@@ -90,6 +91,16 @@ class ShowMapController: UIViewController {
         let btn = UIButton(frame: CGRect(x: 20, y: 330, width: 44, height: 44))
         btn.setTitle("结束追踪", for: .normal)
         btn.setTitleColor(.blue, for: .normal)
+        btn.setTitleColor(.white, for: .disabled)
+        btn.sizeToFit()
+        return btn
+    }()
+    /// 清空路线
+    private lazy var clearTraceLineBtn: UIButton = {
+        let btn = UIButton(frame: CGRect(x: 20, y: 360, width: 44, height: 44))
+        btn.setTitle("清除路线", for: .normal)
+        btn.setTitleColor(.blue, for: .normal)
+        btn.setTitleColor(.white, for: .disabled)
         btn.sizeToFit()
         return btn
     }()
@@ -119,22 +130,38 @@ extension ShowMapController {
         SVProgressHUD.dismiss(withDelay: 1)
         startTraceLineBtn.isEnabled = true
         endTraceLineBtn.isEnabled = false
+        clearTraceLineBtn.isEnabled = true
         // 1. 停止跟踪
         locationManager.stopUpdatingLocation()
         // 2. 保存追踪的点
         LocationData.saveLocationData(arr: routePoints)
     }
     
+    @objc private func clearTraceLine() {
+        // 0. UI处理
+        SVProgressHUD.showSuccess(withStatus: "清除路线")
+        SVProgressHUD.dismiss(withDelay: 1)
+        clearTraceLineBtn.isEnabled = false
+        // 1. 清除路线
+        if let overlay = traceLine {
+            mapView.remove(overlay)
+        }
+        routePoints.removeAll()
+    }
+    
     private func traceAnddrawLineSetUI() {
         // addSubView
         view.addSubview(startTraceLineBtn)
         view.addSubview(endTraceLineBtn)
+        view.addSubview(clearTraceLineBtn)
         // addTarget
         startTraceLineBtn.addTarget(self, action: #selector(startTraceAndDrawLine), for: .touchUpInside)
         endTraceLineBtn.addTarget(self, action: #selector(endTraceAndDrawLine), for: .touchUpInside)
+        clearTraceLineBtn.addTarget(self, action: #selector(clearTraceLine), for: .touchUpInside)
         // init UI
         startTraceLineBtn.isEnabled = true
         endTraceLineBtn.isEnabled = false
+        clearTraceLineBtn.isEnabled = false
     }
     
     /// 绘制Plist中的线
