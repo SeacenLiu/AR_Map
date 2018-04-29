@@ -31,7 +31,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rng-SG-P6A"/>
                     </view>
-                    <navigationItem key="navigationItem" title="漂流瓶" id="Vkk-T2-rWS"/>
+                    <navigationItem key="navigationItem" title="漂流瓶" id="Vkk-T2-rWS">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6Id-Z7-cue">
+                            <connections>
+                                <action selector="addActionClick:" destination="2hg-gs-Q6w" id="Arg-AV-m5x"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="sceneView" destination="WlI-vi-nec" id="62a-gI-QB1"/>
                     </connections>
