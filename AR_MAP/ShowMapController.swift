@@ -30,9 +30,13 @@ class ShowMapController: UIViewController {
         
         mapView.setZoomLevel(17.5, animated: true)
         
-        addGesture()
+        // 添加漂流瓶手势 点一下就出来
+//        addGesture()
         
-        setupLocationUI()
+        // 添加持续定位测试功能
+//        setupLocationUI()
+        
+        drawLine()
     }
     
     // MARK: lazy
@@ -63,6 +67,36 @@ class ShowMapController: UIViewController {
     
     private var data = LocationData()
 
+}
+
+// MARK: - 绘制折线
+extension ShowMapController {
+    private func drawLine() {
+        var lineCoordinates = [CLLocationCoordinate2D]()
+        let path = Bundle.main.path(forResource: "pointData", ofType: "plist")
+        if let points = NSArray(contentsOfFile: path!) {
+            points.forEach {
+                if let point = $0 as? [String: Double] {
+                    let coordinate = CLLocationCoordinate2D(latitude: point["latitude"]!, longitude: point["longitude"]!)
+                    lineCoordinates.append(coordinate)
+                }
+            }
+        } else {
+            print("读取数据失败")
+        }
+        let polyline: MAPolyline = MAPolyline(coordinates: &lineCoordinates, count: UInt(lineCoordinates.count))
+        mapView.add(polyline)
+    }
+    
+    func mapView(_ mapView: MAMapView!, rendererFor overlay: MAOverlay!) -> MAOverlayRenderer! {
+        if overlay.isKind(of: MAPolyline.self) {
+            let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: overlay)
+            renderer.lineWidth = 8.0
+            renderer.strokeColor = UIColor.cyan
+            return renderer
+        }
+        return nil
+    }
 }
 
 // MARK: - 持续定位代理
