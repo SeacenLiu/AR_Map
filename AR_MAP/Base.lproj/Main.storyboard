@@ -10,6 +10,36 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--漂流瓶-->
+        <scene sceneID="psi-g3-7qN">
+            <objects>
+                <viewController id="2hg-gs-Q6w" customClass="ARBottleController" customModule="AR_MAP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cHN-HM-ddb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WlI-vi-nec">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Rng-SG-P6A" firstAttribute="bottom" secondItem="WlI-vi-nec" secondAttribute="bottom" id="IJF-L3-AEt"/>
+                            <constraint firstItem="WlI-vi-nec" firstAttribute="leading" secondItem="Rng-SG-P6A" secondAttribute="leading" id="dox-G2-iyl"/>
+                            <constraint firstItem="Rng-SG-P6A" firstAttribute="trailing" secondItem="WlI-vi-nec" secondAttribute="trailing" id="nHI-sf-Dbi"/>
+                            <constraint firstItem="WlI-vi-nec" firstAttribute="top" secondItem="Rng-SG-P6A" secondAttribute="top" id="tqw-DU-6fs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Rng-SG-P6A"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="漂流瓶" id="Vkk-T2-rWS"/>
+                    <connections>
+                        <outlet property="sceneView" destination="WlI-vi-nec" id="62a-gI-QB1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jj1-V6-ndq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="618" y="150"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="ahX-9f-TSi">
             <objects>
@@ -32,9 +62,18 @@
                                     <segue destination="14Z-oy-Nv5" kind="show" id="ZJR-cR-GHH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZP-hE-Bjg">
+                                <rect key="frame" x="124" y="350.5" width="127" height="30"/>
+                                <state key="normal" title="随机生成漂流瓶AR"/>
+                                <connections>
+                                    <segue destination="2hg-gs-Q6w" kind="show" id="PIg-aS-WKG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="fZP-hE-Bjg" firstAttribute="centerY" secondItem="GIc-yD-KE9" secondAttribute="centerY" id="3Rd-Fd-ndE"/>
+                            <constraint firstItem="fZP-hE-Bjg" firstAttribute="centerX" secondItem="GIc-yD-KE9" secondAttribute="centerX" id="Hdn-CX-9q2"/>
                             <constraint firstItem="eTX-uE-Qef" firstAttribute="centerX" secondItem="GIc-yD-KE9" secondAttribute="centerX" id="LLA-Gp-WZF"/>
                             <constraint firstItem="K6n-1d-5YD" firstAttribute="centerY" secondItem="GIc-yD-KE9" secondAttribute="centerY" multiplier="1.5" id="Tv7-gn-Daj"/>
                             <constraint firstItem="K6n-1d-5YD" firstAttribute="centerX" secondItem="GIc-yD-KE9" secondAttribute="centerX" id="XaH-hs-SAW"/>
@@ -48,7 +87,7 @@
             </objects>
             <point key="canvasLocation" x="-135.19999999999999" y="149.77511244377811"/>
         </scene>
-        <!--Show Map Controller-->
+        <!--地图显示-->
         <scene sceneID="pyu-ke-CK0">
             <objects>
                 <viewController id="14Z-oy-Nv5" customClass="ShowMapController" customModule="AR_MAP" customModuleProvider="target" sceneMemberID="viewController">
@@ -58,12 +97,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="fLP-9r-mGi"/>
                     </view>
+                    <navigationItem key="navigationItem" title="地图显示" id="6pC-Ay-A3c"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hXh-00-nb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-135" y="893"/>
         </scene>
-        <!--Arround View Controller-->
+        <!--AR显示附近-->
         <scene sceneID="Ucz-8M-Z8L">
             <objects>
                 <viewController id="1n9-83-WqY" customClass="ArroundViewController" customModule="AR_MAP" customModuleProvider="target" sceneMemberID="viewController">
@@ -103,13 +143,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WEn-tS-xUi"/>
                     </view>
+                    <navigationItem key="navigationItem" title="AR显示附近" id="Lvc-7h-eQp"/>
                     <connections>
                         <outlet property="sceneView" destination="Xh0-Hs-2CD" id="Hfb-TQ-ogW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TtI-Zz-pVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="607" y="150"/>
+            <point key="canvasLocation" x="-135" y="-569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PZJ-HM-pBI">

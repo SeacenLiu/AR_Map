@@ -21,6 +21,7 @@
 		14E76E6F209559760095BE75 /* bottle.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E76E6E209559760095BE75 /* bottle.png */; };
 		14E76E71209564350095BE75 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E76E70209564350095BE75 /* LocationData.swift */; };
 		14E76E7320956D170095BE75 /* pointData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14E76E7220956D160095BE75 /* pointData.plist */; };
+		14E76E772095B64D0095BE75 /* ARBottleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E76E762095B64D0095BE75 /* ARBottleController.swift */; };
 		30460D60732DA72AE1F473D8 /* Pods_AR_MAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF021FD9DEAD6899D7AB7EC5 /* Pods_AR_MAP.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		14E76E6E209559760095BE75 /* bottle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottle.png; sourceTree = "<group>"; };
 		14E76E70209564350095BE75 /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
 		14E76E7220956D160095BE75 /* pointData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = pointData.plist; sourceTree = "<group>"; };
+		14E76E762095B64D0095BE75 /* ARBottleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBottleController.swift; sourceTree = "<group>"; };
 		CF021FD9DEAD6899D7AB7EC5 /* Pods_AR_MAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AR_MAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BA766339C7731B117F185F /* Pods-AR_MAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR_MAP.release.xcconfig"; path = "Pods/Target Support Files/Pods-AR_MAP/Pods-AR_MAP.release.xcconfig"; sourceTree = "<group>"; };
 		DA3130AE3384F2B0F63D8009 /* Pods-AR_MAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR_MAP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AR_MAP/Pods-AR_MAP.debug.xcconfig"; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				14E76E70209564350095BE75 /* LocationData.swift */,
 				14E76E7220956D160095BE75 /* pointData.plist */,
 				14E76E6E209559760095BE75 /* bottle.png */,
+				14E76E762095B64D0095BE75 /* ARBottleController.swift */,
 			);
 			path = AR_MAP;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				14E76E71209564350095BE75 /* LocationData.swift in Sources */,
 				14773BEE2093673A006242C6 /* ArroundViewController.swift in Sources */,
 				141B108E2081C23900CDC7BB /* ViewController.swift in Sources */,
+				14E76E772095B64D0095BE75 /* ARBottleController.swift in Sources */,
 				141B10A42081F61E00CDC7BB /* SCLocationManager.swift in Sources */,
 				141B10A620821ACC00CDC7BB /* SCLocationNode.swift in Sources */,
 				14773BF02094496F006242C6 /* ShowMapController.swift in Sources */,

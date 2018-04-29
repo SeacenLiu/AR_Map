@@ -323,8 +323,7 @@ extension ShowMapController: MAMapViewDelegate {
     
     /// 点击中大头针
     func mapView(_ mapView: MAMapView!, didSelect view: MAAnnotationView!) {
-        print("选中了")
-        print(view)
+        print("选中了: " + view.description)
     }
 }
 
