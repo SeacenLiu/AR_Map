@@ -16,6 +16,7 @@ class ARBottleController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sceneView.delegate = self
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         
@@ -31,7 +32,7 @@ class ARBottleController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         SVProgressHUD.showInfo(withStatus: "寻找四周的漂流瓶")
-        SVProgressHUD.dismiss(withDelay: 1.5)
+        SVProgressHUD.dismiss(withDelay: 1)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -42,14 +43,36 @@ class ARBottleController: UIViewController {
 }
 
 // MARK: - AR显示和交互
-extension ARBottleController {
+extension ARBottleController: ARSCNViewDelegate {
+    
     private func addBottle() {
         let box = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
         let color: UIColor = #colorLiteral(red: 0.3411764706, green: 0.9803921569, blue: 1, alpha: 1)
         box.materials.first?.diffuse.contents = color
         box.materials.first?.transparency = 0.5
         let node = SCNNode(geometry: box)
-        node.position = SCNVector3(0, 0, -1)
         sceneView.scene.rootNode.addChildNode(node)
+        let randNum = Double(arc4random())
+        let r = 1.0
+        let x = r * cos(randNum * .pi)
+        let z = r * sin(randNum * .pi)
+        node.position = SCNVector3(x, 0, z)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //        let transform = matrix_float4x4()
+        //        let anchor = ARAnchor(transform: transform)
+        //        sceneView.session.add(anchor: anchor)
+    }
+    
+//    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+//        let box = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
+//        let color: UIColor = #colorLiteral(red: 0.3411764706, green: 0.9803921569, blue: 1, alpha: 1)
+//        box.materials.first?.diffuse.contents = color
+//        box.materials.first?.transparency = 0.5
+//        let node = SCNNode(geometry: box)
+//        print(node)
+//        print(anchor.transform)
+//        return node
+//    }
 }
