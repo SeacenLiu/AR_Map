@@ -36,21 +36,27 @@ class ShowMapController: UIViewController {
         // 添加持续定位测试功能
 //        setupLocationUI()
         
-        drawLine()
+        // 绘制假数据上的经纬度
+//        drawLineFromPlist()
+        
+        // 追踪画点
+        traceAnddrawLineSetUI()
     }
     
     // MARK: lazy
+    /// 地图控件
     private lazy var mapView: MAMapView = MAMapView(frame: CGRect(x: 0, y: 64, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-64))
     
-    private lazy var startBtn: UIButton = {
+    /// 开始跟踪按钮
+    private lazy var startTraceBtn: UIButton = {
         let btn = UIButton(frame: CGRect(x: 20, y: UIScreen.main.bounds.height-88, width: 44, height: 44))
         btn.setTitle("开始持续定位", for: .normal)
         btn.setTitleColor(.blue, for: .normal)
         btn.sizeToFit()
         return btn
     }()
-    
-    private lazy var endBtn: UIButton = {
+    /// 停止追踪按钮
+    private lazy var endTeaceBtn: UIButton = {
         let btn = UIButton(frame: CGRect(x: 20, y: UIScreen.main.bounds.height-44, width: 44, height: 44))
         btn.setTitle("结束持续定位", for: .normal)
         btn.setTitleColor(.blue, for: .normal)
@@ -58,20 +64,81 @@ class ShowMapController: UIViewController {
         return btn
     }()
     
+    /// 定位单例
     private lazy var locationManager: AMapLocationManager = {
         let manager = AMapLocationManager()
         manager.delegate = self
-        manager.distanceFilter = 1
+        manager.distanceFilter = 10
         return manager
     }()
     
+    /// 绘线假数据
     private var data = LocationData()
-
+    
+    /// 绘线真数据
+    private var routePoints = [CLLocationCoordinate2D]()
+    /// 开始追踪绘线按钮
+    private lazy var startTraceLineBtn: UIButton = {
+        let btn = UIButton(frame: CGRect(x: 20, y: 300, width: 44, height: 44))
+        btn.setTitle("开始追踪", for: .normal)
+        btn.setTitleColor(.blue, for: .normal)
+        btn.sizeToFit()
+        return btn
+    }()
+    /// 结束追踪绘线按钮
+    private lazy var endTraceLineBtn: UIButton = {
+        let btn = UIButton(frame: CGRect(x: 20, y: 330, width: 44, height: 44))
+        btn.setTitle("结束追踪", for: .normal)
+        btn.setTitleColor(.blue, for: .normal)
+        btn.sizeToFit()
+        return btn
+    }()
+    /// 追踪路线
+    private var traceLine: MAPolyline?
+    
 }
 
 // MARK: - 绘制折线
 extension ShowMapController {
-    private func drawLine() {
+    @objc private func startTraceAndDrawLine() {
+        // 0. UI处理
+        SVProgressHUD.showSuccess(withStatus: "开始追踪")
+        SVProgressHUD.dismiss(withDelay: 1)
+        startTraceLineBtn.isEnabled = false
+        endTraceLineBtn.isEnabled = true
+        // 1. 打开持续定位
+        locationManager.startUpdatingLocation()
+        // 2. 刷新点
+        routePoints.removeAll()
+        // 3. 代理中调用绘线
+    }
+    
+    @objc private func endTraceAndDrawLine() {
+        // 0. UI处理
+        SVProgressHUD.showSuccess(withStatus: "结束追踪")
+        SVProgressHUD.dismiss(withDelay: 1)
+        startTraceLineBtn.isEnabled = true
+        endTraceLineBtn.isEnabled = false
+        // 1. 停止跟踪
+        locationManager.stopUpdatingLocation()
+        // 2. 保存追踪的点
+        LocationData.saveLocationData(arr: routePoints)
+    }
+    
+    private func traceAnddrawLineSetUI() {
+        // addSubView
+        view.addSubview(startTraceLineBtn)
+        view.addSubview(endTraceLineBtn)
+        // addTarget
+        startTraceLineBtn.addTarget(self, action: #selector(startTraceAndDrawLine), for: .touchUpInside)
+        endTraceLineBtn.addTarget(self, action: #selector(endTraceAndDrawLine), for: .touchUpInside)
+        // init UI
+        startTraceLineBtn.isEnabled = true
+        endTraceLineBtn.isEnabled = false
+    }
+    
+    /// 绘制Plist中的线
+    private func drawLineFromPlist() {
         var lineCoordinates = [CLLocationCoordinate2D]()
         let path = Bundle.main.path(forResource: "pointData", ofType: "plist")
         if let points = NSArray(contentsOfFile: path!) {
@@ -88,53 +155,55 @@ extension ShowMapController {
         mapView.add(polyline)
     }
     
-    func mapView(_ mapView: MAMapView!, rendererFor overlay: MAOverlay!) -> MAOverlayRenderer! {
-        if overlay.isKind(of: MAPolyline.self) {
-            let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: overlay)
-            renderer.lineWidth = 8.0
-            renderer.strokeColor = UIColor.cyan
-            return renderer
-        }
-        return nil
-    }
 }
 
 // MARK: - 持续定位代理
 extension ShowMapController: AMapLocationManagerDelegate {
     private func setupLocationUI() {
-        view.addSubview(startBtn)
-        view.addSubview(endBtn)
-        startBtn.addTarget(self, action: #selector(startContinueLocation), for: .touchUpInside)
-        endBtn.addTarget(self, action: #selector(endLocation), for: .touchUpInside)
+        view.addSubview(startTraceBtn)
+        view.addSubview(endTeaceBtn)
+        startTraceBtn.addTarget(self, action: #selector(startContinueLocation), for: .touchUpInside)
+        endTeaceBtn.addTarget(self, action: #selector(endLocation), for: .touchUpInside)
         
-        endBtn.isEnabled = false
-        startBtn.isEnabled = true
+        endTeaceBtn.isEnabled = false
+        startTraceBtn.isEnabled = true
     }
     
     @objc private func startContinueLocation() {
         SVProgressHUD.showSuccess(withStatus: "开始持续定位")
         SVProgressHUD.dismiss(withDelay: 1)
         locationManager.startUpdatingLocation()
-        endBtn.isEnabled = true
-        startBtn.isEnabled = false
+        endTeaceBtn.isEnabled = true
+        startTraceBtn.isEnabled = false
     }
     
     @objc private func endLocation() {
         SVProgressHUD.showSuccess(withStatus: "结束持续定位")
         SVProgressHUD.dismiss(withDelay: 1)
         locationManager.stopUpdatingLocation()
-        endBtn.isEnabled = false
-        startBtn.isEnabled = true
+        endTeaceBtn.isEnabled = false
+        startTraceBtn.isEnabled = true
         
         data.saveToPlist()
     }
     
     func amapLocationManager(_ manager: AMapLocationManager!, didUpdate location: CLLocation!) {
+        /// 绘制追踪路线的思路
+        // 1. 添加新元素到经纬度数组
+        routePoints.append(location.coordinate)
+        // 2. 重新绘制
+        if let overlay = traceLine {
+            mapView.remove(overlay)
+        }
+        traceLine = MAPolyline(coordinates: &routePoints, count: UInt(routePoints.count))
+        mapView.add(traceLine)
+        
+        /** 测试持续定位的代码
         print("当前位置: \(location.coordinate.latitude) , \(location.coordinate.longitude)")
         SVProgressHUD.showSuccess(withStatus: "\(location.coordinate.latitude) , \(location.coordinate.longitude)")
         SVProgressHUD.dismiss(withDelay: 2)
-        
         data.addData(location: location.coordinate)
+         */
     }
 }
 
@@ -166,6 +235,18 @@ extension ShowMapController: UIGestureRecognizerDelegate {
 // MARK: - MAMapViewDelegate
 extension ShowMapController: MAMapViewDelegate {
     
+    /// 改变绘线的样式
+    func mapView(_ mapView: MAMapView!, rendererFor overlay: MAOverlay!) -> MAOverlayRenderer! {
+        if overlay.isKind(of: MAPolyline.self) {
+            let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: overlay)
+            renderer.lineWidth = 8.0
+            renderer.strokeColor = UIColor.cyan
+            return renderer
+        }
+        return nil
+    }
+    
+    /// 显示大头针的样式
     func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
         if annotation.isKind(of: MAPointAnnotation.self) {
             let pointReuseIndetifier = "pointReuseIndetifier"

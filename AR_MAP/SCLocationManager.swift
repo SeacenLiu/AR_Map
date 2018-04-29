@@ -25,7 +25,8 @@ class SCLocationManager: NSObject {
     override init() {
         super.init()
         // 配置Key
-        // AMapServices.shared().apiKey = "a092e82e7d3058c4f26c7e9579c39b23"
+        AMapServices.shared().apiKey = "a092e82e7d3058c4f26c7e9579c39b23"
+//        locaiton.allowsBackgroundLocationUpdates = true
     }
     
     // MARK: - private

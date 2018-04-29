@@ -10,23 +10,30 @@ import Foundation
 
 class LocationData {
     
+    /// 保存[CLLocationCoordinate2D]
+    class func saveLocationData(arr: [CLLocationCoordinate2D]) {
+        let traceData = LocationData()
+        arr.forEach {
+            traceData.addData(location: $0)
+        }
+        traceData.saveToPlist()
+    }
+    
     var locations = [CLLocationCoordinate2D]()
     
     var datas = [[String: Double]]()
     
     func addData(location: CLLocationCoordinate2D) {
         locations.append(location)
-        
         let dic = ["latitude": location.latitude, "longitude": location.longitude]
         datas.append(dic)
     }
     
     func saveToPlist() {
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
-        let filePath = path! + "/locationData.plist"
-        let testPath = path! + "/test.plist"
+        let timePath = Date().description
+        let filePath = path! + "/" + timePath + "locationData.plist"
         print(filePath)
-        NSArray(array: [1,2,3,4,5,6,7,2,8,9]).write(toFile: testPath, atomically: true)
         (datas as NSArray).write(toFile: filePath, atomically: true)
     }
 }
