@@ -60,6 +60,8 @@ class ShowMapController: UIViewController {
         manager.distanceFilter = 1
         return manager
     }()
+    
+    private var data = LocationData()
 
 }
 
@@ -89,12 +91,16 @@ extension ShowMapController: AMapLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         endBtn.isEnabled = false
         startBtn.isEnabled = true
+        
+        data.saveToPlist()
     }
     
     func amapLocationManager(_ manager: AMapLocationManager!, didUpdate location: CLLocation!) {
         print("当前位置: \(location.coordinate.latitude) , \(location.coordinate.longitude)")
         SVProgressHUD.showSuccess(withStatus: "\(location.coordinate.latitude) , \(location.coordinate.longitude)")
         SVProgressHUD.dismiss(withDelay: 2)
+        
+        data.addData(location: location.coordinate)
     }
 }
 
