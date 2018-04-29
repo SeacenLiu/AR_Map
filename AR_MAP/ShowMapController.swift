@@ -31,7 +31,7 @@ class ShowMapController: UIViewController {
         mapView.setZoomLevel(17.5, animated: true)
         
         // 添加漂流瓶手势 点一下就出来
-//        addGesture()
+        tapMapGestureUI()
         
         // 添加持续定位测试功能
 //        setupLocationUI()
@@ -40,7 +40,7 @@ class ShowMapController: UIViewController {
 //        drawLineFromPlist()
         
         // 追踪画点
-        traceAnddrawLineSetUI()
+//        traceAnddrawLineSetUI()
     }
     
     // MARK: lazy
@@ -106,6 +106,19 @@ class ShowMapController: UIViewController {
     }()
     /// 追踪路线
     private var traceLine: MAPolyline?
+    
+    /// 点击空白处添加锚点按钮
+    private lazy var addBottleBtn: UIButton = {
+        let btn = UIButton(frame: CGRect(x: 20, y: 200, width: 44, height: 44))
+        btn.setTitle("添加锚点状态", for: .normal)
+        btn.setTitle("点击锚点状态", for: .selected)
+        btn.setTitleColor(.blue, for: .normal)
+        btn.setTitleColor(.white, for: .disabled)
+        btn.sizeToFit()
+        return btn
+    }()
+    /// 单击添加锚点手势
+    private lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction(gesture:)))
     
 }
 
@@ -234,7 +247,7 @@ extension ShowMapController: AMapLocationManagerDelegate {
     }
 }
 
-// MARK: - 单击手势
+// MARK: - 单击手势添加锚点
 extension ShowMapController: UIGestureRecognizerDelegate {
     @objc func tapAction(gesture: UITapGestureRecognizer) {
         if gesture.state == .ended {
@@ -248,10 +261,19 @@ extension ShowMapController: UIGestureRecognizerDelegate {
         }
     }
     
-    private func addGesture() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(gesture:)))
-        tap.delegate = self
-        mapView.addGestureRecognizer(tap)
+    @objc func addBottleAction(sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        tapGesture.isEnabled = !sender.isSelected
+    }
+    
+    private func tapMapGestureUI() {
+        // 1. 手势添加
+        tapGesture.delegate = self
+        mapView.addGestureRecognizer(tapGesture)
+        // 2. addSubView
+        view.addSubview(addBottleBtn)
+        // 3. addTarget
+        addBottleBtn.addTarget(self, action: #selector(addBottleAction(sender:)), for: .touchUpInside)
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -297,6 +319,12 @@ extension ShowMapController: MAMapViewDelegate {
             return annotationView!
         }
         return nil
+    }
+    
+    /// 点击中大头针
+    func mapView(_ mapView: MAMapView!, didSelect view: MAAnnotationView!) {
+        print("选中了")
+        print(view)
     }
 }
 
