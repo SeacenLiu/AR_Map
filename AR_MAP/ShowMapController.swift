@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ShowMapController: UIViewController {
 
@@ -30,22 +31,74 @@ class ShowMapController: UIViewController {
         mapView.setZoomLevel(17.5, animated: true)
         
         addGesture()
+        
+        setupLocationUI()
     }
     
     // MARK: lazy
     private lazy var mapView: MAMapView = MAMapView(frame: CGRect(x: 0, y: 64, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-64))
+    
+    private lazy var startBtn: UIButton = {
+        let btn = UIButton(frame: CGRect(x: 20, y: UIScreen.main.bounds.height-88, width: 44, height: 44))
+        btn.setTitle("开始持续定位", for: .normal)
+        btn.setTitleColor(.blue, for: .normal)
+        btn.sizeToFit()
+        return btn
+    }()
+    
+    private lazy var endBtn: UIButton = {
+        let btn = UIButton(frame: CGRect(x: 20, y: UIScreen.main.bounds.height-44, width: 44, height: 44))
+        btn.setTitle("结束持续定位", for: .normal)
+        btn.setTitleColor(.blue, for: .normal)
+        btn.sizeToFit()
+        return btn
+    }()
+    
+    private lazy var locationManager: AMapLocationManager = {
+        let manager = AMapLocationManager()
+        manager.delegate = self
+        manager.distanceFilter = 1
+        return manager
+    }()
 
 }
 
+// MARK: - 持续定位代理
+extension ShowMapController: AMapLocationManagerDelegate {
+    private func setupLocationUI() {
+        view.addSubview(startBtn)
+        view.addSubview(endBtn)
+        startBtn.addTarget(self, action: #selector(startContinueLocation), for: .touchUpInside)
+        endBtn.addTarget(self, action: #selector(endLocation), for: .touchUpInside)
+        
+        endBtn.isEnabled = false
+        startBtn.isEnabled = true
+    }
+    
+    @objc private func startContinueLocation() {
+        SVProgressHUD.showSuccess(withStatus: "开始持续定位")
+        SVProgressHUD.dismiss(withDelay: 1)
+        locationManager.startUpdatingHeading()
+        endBtn.isEnabled = true
+        startBtn.isEnabled = false
+    }
+    
+    @objc private func endLocation() {
+        SVProgressHUD.showSuccess(withStatus: "结束持续定位")
+        SVProgressHUD.dismiss(withDelay: 1)
+        locationManager.stopUpdatingLocation()
+        endBtn.isEnabled = false
+        startBtn.isEnabled = true
+    }
+    
+    func amapLocationManager(_ manager: AMapLocationManager!, didUpdate location: CLLocation!) {
+        print("当前位置: \(location.coordinate.latitude) , \(location.coordinate.longitude)")
+    }
+}
+
+// MARK: - 单击手势
 extension ShowMapController: UIGestureRecognizerDelegate {
-    @objc func longPress(gesture: UITapGestureRecognizer) {
-        if gesture.state == .began {
-            print("began")
-        } else if gesture.state == .changed {
-            print("changed")
-        } else if gesture.state == .ended {
-            print("ended")
-        }
+    @objc func tapAction(gesture: UITapGestureRecognizer) {
         if gesture.state == .ended {
             let touchPoint = gesture.location(in: mapView)
             let annotation = MAPointAnnotation()
@@ -58,7 +111,7 @@ extension ShowMapController: UIGestureRecognizerDelegate {
     }
     
     private func addGesture() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(longPress(gesture:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(gesture:)))
         tap.delegate = self
         mapView.addGestureRecognizer(tap)
     }
@@ -68,23 +121,28 @@ extension ShowMapController: UIGestureRecognizerDelegate {
     }
 }
 
+// MARK: - MAMapViewDelegate
 extension ShowMapController: MAMapViewDelegate {
     
     func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
         if annotation.isKind(of: MAPointAnnotation.self) {
             let pointReuseIndetifier = "pointReuseIndetifier"
-            var annotationView: MAPinAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: pointReuseIndetifier) as! MAPinAnnotationView?
+            var annotationView: MAAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: pointReuseIndetifier)
             
             if annotationView == nil {
-                annotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndetifier)
+                annotationView = MAAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndetifier)
             }
             
-            annotationView!.canShowCallout = true
-            annotationView!.animatesDrop = true
-            annotationView!.isDraggable = true
-            annotationView!.rightCalloutAccessoryView = UIButton(type: UIButtonType.detailDisclosure)
+            // 大头针
+//            annotationView!.canShowCallout = true
+//            annotationView!.animatesDrop = true
+//            annotationView!.isDraggable = true
+//            annotationView!.rightCalloutAccessoryView = UIButton(type: UIButtonType.detailDisclosure)
+//            annotationView!.pinColor = MAPinAnnotationColor(rawValue: 1)!
             
-            annotationView!.pinColor = MAPinAnnotationColor(rawValue: 1)!
+            // 自定义贴图
+            annotationView!.image = UIImage(named: "bottle.png")
+            annotationView!.centerOffset = CGPoint(x: 0, y: -18)
             
             return annotationView!
         }
