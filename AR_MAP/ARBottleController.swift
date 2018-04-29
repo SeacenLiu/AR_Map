@@ -21,6 +21,7 @@ class ARBottleController: UIViewController {
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         
         addBottle()
+        addGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +45,20 @@ class ARBottleController: UIViewController {
 
 // MARK: - AR显示和交互
 extension ARBottleController: ARSCNViewDelegate {
+    
+    @objc func tapTest(recognizer: UITapGestureRecognizer) {
+        print("tapTest")
+        let point = recognizer.location(in: sceneView)
+        let results = sceneView.hitTest(point, options: [SCNHitTestOption.boundingBoxOnly : true, SCNHitTestOption.firstFoundOnly: true])
+        results.forEach { (result) in
+            print(result)
+        }
+    }
+    
+    private func addGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapTest(recognizer:)))
+        sceneView.addGestureRecognizer(tap)
+    }
     
     private func addBottle() {
         let box = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
