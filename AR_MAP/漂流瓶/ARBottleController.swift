@@ -32,8 +32,7 @@ class ARBottleController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        SVProgressHUD.showInfo(withStatus: "寻找四周的漂流瓶")
-        SVProgressHUD.dismiss(withDelay: 1)
+        SVProgressHUD.showTip(status: "寻找四周的漂流瓶")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,8 +57,7 @@ class ARBottleController: UIViewController {
 extension ARBottleController: ARSCNViewDelegate {
     
     @IBAction func addActionClick(_ sender: Any) {
-        SVProgressHUD.showInfo(withStatus: "寻找四周的漂流瓶")
-        SVProgressHUD.dismiss(withDelay: 1)
+        SVProgressHUD.showTip(status: "寻找四周的漂流瓶")
         addBottle()
     }
     
