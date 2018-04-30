@@ -9,12 +9,31 @@
 import UIKit
 import AudioToolbox
 import UserNotifications
+import CoreMotion
 
 class FunctionController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let motionManager = CMMotionManager()
+        let queue = OperationQueue()
+        // 加速计
+        if motionManager.isAccelerometerActive {
+            motionManager.accelerometerUpdateInterval = 0.5
+            motionManager.startAccelerometerUpdates(to: queue, withHandler: { (accelerometerData, error) in
+                if let err = error {
+                    print(err)
+                    return
+                }
+                guard let accelerometerData = accelerometerData else { return }
+                let zTheta = atan2(accelerometerData.acceleration.z, sqrt(accelerometerData.acceleration.x*accelerometerData.acceleration.x+accelerometerData.acceleration.y*accelerometerData.acceleration.y))/Double.pi*(-90.0)*2.0-90.0
+                let xyTheta = atan2(accelerometerData.acceleration.x,accelerometerData.acceleration.y)/Double.pi*180.0
+                print("手机与水平面的夹角是:\(-zTheta)，手机绕自身旋转的速度是:\(xyTheta)")
+            })
+        } else {
+            print("This device has no accelerometer")
+        }
     }
     
     /// 本地推送
@@ -47,9 +66,6 @@ extension FunctionController {
         // 推送提示音
         content.sound = UNNotificationSound.default()
         
-        // 指定音频文件
-//        content.sound = UNNotificationSound(named: "prompt.mp3")
-        
         // 附加信息
         content.userInfo = ["key1": "value1", "key2": "value2"]
         // 添加附件
@@ -63,16 +79,6 @@ extension FunctionController {
         // 通过时间差，多少秒后推送本地推送
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
         let request = UNNotificationRequest(identifier: "Seacen", content: content, trigger: trigger)
-        
-        // 通过时间来推送
-//        let dateComponents = NSDateComponents()
-//        dateComponents.year = 2018
-//        dateComponents.month = 4
-//        dateComponents.day = 30
-//        dateComponents.hour = 16
-//        dateComponents.minute = 48
-//        dateComponents.second = 0
-//        let triggerDate = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         
         // 在 进入某个区域后 推送本地推送(注意：此处用CLCircularRegion，不要用CLRegion)
 //        let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 21, longitude: 110), radius: 1000, identifier: "SeacenRegion")
