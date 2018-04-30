@@ -24,7 +24,7 @@
 		14E76E872096F1F60095BE75 /* SVProgressHUD+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E76E862096F1F60095BE75 /* SVProgressHUD+Ex.swift */; };
 		14E76E892096F6620095BE75 /* FunctionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E76E882096F6620095BE75 /* FunctionController.swift */; };
 		14E76E8C20970B6A0095BE75 /* prompt.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 14E76E8B20970B690095BE75 /* prompt.mp3 */; };
-		14E76E8E20970CE50095BE75 /* nico.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E76E8D20970CE50095BE75 /* nico.png */; };
+		14E76E9020973C2A0095BE75 /* nico.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14E76E8F20973C2A0095BE75 /* nico.jpg */; };
 		30460D60732DA72AE1F473D8 /* Pods_AR_MAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF021FD9DEAD6899D7AB7EC5 /* Pods_AR_MAP.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +49,7 @@
 		14E76E862096F1F60095BE75 /* SVProgressHUD+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SVProgressHUD+Ex.swift"; sourceTree = "<group>"; };
 		14E76E882096F6620095BE75 /* FunctionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionController.swift; sourceTree = "<group>"; };
 		14E76E8B20970B690095BE75 /* prompt.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = prompt.mp3; sourceTree = "<group>"; };
-		14E76E8D20970CE50095BE75 /* nico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nico.png; sourceTree = "<group>"; };
+		14E76E8F20973C2A0095BE75 /* nico.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nico.jpg; sourceTree = "<group>"; };
 		CF021FD9DEAD6899D7AB7EC5 /* Pods_AR_MAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AR_MAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BA766339C7731B117F185F /* Pods-AR_MAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR_MAP.release.xcconfig"; path = "Pods/Target Support Files/Pods-AR_MAP/Pods-AR_MAP.release.xcconfig"; sourceTree = "<group>"; };
 		DA3130AE3384F2B0F63D8009 /* Pods-AR_MAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR_MAP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AR_MAP/Pods-AR_MAP.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 				141B10972081C23900CDC7BB /* Info.plist */,
 				14E76E862096F1F60095BE75 /* SVProgressHUD+Ex.swift */,
 				14E76E8B20970B690095BE75 /* prompt.mp3 */,
-				14E76E8D20970CE50095BE75 /* nico.png */,
+				14E76E8F20973C2A0095BE75 /* nico.jpg */,
 			);
 			path = AR_MAP;
 			sourceTree = "<group>";
@@ -224,11 +224,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14E76E9020973C2A0095BE75 /* nico.jpg in Resources */,
 				141B108C2081C23900CDC7BB /* art.scnassets in Resources */,
 				141B10962081C23900CDC7BB /* LaunchScreen.storyboard in Resources */,
 				14E76E8C20970B6A0095BE75 /* prompt.mp3 in Resources */,
 				141B10932081C23900CDC7BB /* Assets.xcassets in Resources */,
-				14E76E8E20970CE50095BE75 /* nico.png in Resources */,
 				141B10912081C23900CDC7BB /* Main.storyboard in Resources */,
 				14E76E6F209559760095BE75 /* bottle.png in Resources */,
 				14E76E7320956D170095BE75 /* pointData.plist in Resources */,

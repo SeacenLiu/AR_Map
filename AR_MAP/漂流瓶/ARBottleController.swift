@@ -16,9 +16,8 @@ class ARBottleController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sceneView.delegate = self
-        sceneView.showsStatistics = true
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+        debugUI()
+//        sceneView.delegate = self
         
         addBottle()
         addGesture()
@@ -40,6 +39,11 @@ class ARBottleController: UIViewController {
         sceneView.session.pause()
     }
     
+    private func debugUI() {
+        sceneView.showsStatistics = true
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+    }
+    
     // MARK: - lazy
     /// 创建漂流瓶结点
     private lazy var bottleNode: SCNNode = {
@@ -54,7 +58,7 @@ class ARBottleController: UIViewController {
 }
 
 // MARK: - AR显示和交互
-extension ARBottleController: ARSCNViewDelegate {
+extension ARBottleController {
     
     @IBAction func addActionClick(_ sender: Any) {
         SVProgressHUD.showTip(status: "寻找四周的漂流瓶")

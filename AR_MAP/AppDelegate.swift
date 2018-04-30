@@ -55,11 +55,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     // MARK: - UNUserNotificationCenterDelegate
     /// App在前台时收到推送会调用
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        print("当前点击的通知 : \(notification)")
+        print("在前台时通知 : \(notification)")
     }
     /// App不在前台时收到推送用户点开会调用
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print("收到通知时 : \(response)")
+        print("不在前台时收到通知时 : \(response)")
     }
     
 }

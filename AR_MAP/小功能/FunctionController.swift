@@ -53,7 +53,7 @@ extension FunctionController {
         // 附加信息
         content.userInfo = ["key1": "value1", "key2": "value2"]
         // 添加附件
-        if let imageUrl = Bundle.main.url(forResource: "nico", withExtension: "png"),
+        if let imageUrl = Bundle.main.url(forResource: "nico", withExtension: "jpg"),
             let attachment = try? UNNotificationAttachment(identifier: "imageAttachment", url: imageUrl, options: nil) {
             content.attachments = [attachment]
         } else {
