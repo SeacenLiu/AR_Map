@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,54 +43,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jj1-V6-ndq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="618" y="150"/>
+            <point key="canvasLocation" x="833" y="523"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="ahX-9f-TSi">
+        <!--Function Controller-->
+        <scene sceneID="cRT-vD-QUf">
             <objects>
-                <viewController id="9Sb-eJ-kCb" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="e9p-SP-U0g">
+                <viewController id="fjw-Ej-dRs" customClass="FunctionController" customModule="AR_MAP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bS4-0a-vZ3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTX-uE-Qef">
-                                <rect key="frame" x="119" y="168" width="137" height="30"/>
-                                <state key="normal" title="AR附近的路标Demo"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYV-Ya-ScJ">
+                                <rect key="frame" x="172" y="350.5" width="31" height="30"/>
+                                <state key="normal" title="震姬"/>
                                 <connections>
-                                    <segue destination="1n9-83-WqY" kind="show" id="2o5-3M-AaY"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6n-1d-5YD">
-                                <rect key="frame" x="142" y="533.5" width="92" height="30"/>
-                                <state key="normal" title="高德地图显示"/>
-                                <connections>
-                                    <segue destination="14Z-oy-Nv5" kind="show" id="ZJR-cR-GHH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZP-hE-Bjg">
-                                <rect key="frame" x="124" y="350.5" width="127" height="30"/>
-                                <state key="normal" title="随机生成漂流瓶AR"/>
-                                <connections>
-                                    <segue destination="2hg-gs-Q6w" kind="show" id="PIg-aS-WKG"/>
+                                    <action selector="shakeActionWithSender:" destination="fjw-Ej-dRs" eventType="touchUpInside" id="GbK-Lg-TkD"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fZP-hE-Bjg" firstAttribute="centerY" secondItem="GIc-yD-KE9" secondAttribute="centerY" id="3Rd-Fd-ndE"/>
-                            <constraint firstItem="fZP-hE-Bjg" firstAttribute="centerX" secondItem="GIc-yD-KE9" secondAttribute="centerX" id="Hdn-CX-9q2"/>
-                            <constraint firstItem="eTX-uE-Qef" firstAttribute="centerX" secondItem="GIc-yD-KE9" secondAttribute="centerX" id="LLA-Gp-WZF"/>
-                            <constraint firstItem="K6n-1d-5YD" firstAttribute="centerY" secondItem="GIc-yD-KE9" secondAttribute="centerY" multiplier="1.5" id="Tv7-gn-Daj"/>
-                            <constraint firstItem="K6n-1d-5YD" firstAttribute="centerX" secondItem="GIc-yD-KE9" secondAttribute="centerX" id="XaH-hs-SAW"/>
-                            <constraint firstItem="eTX-uE-Qef" firstAttribute="centerY" secondItem="GIc-yD-KE9" secondAttribute="centerY" multiplier="0.5" id="efO-i9-xZZ"/>
+                            <constraint firstItem="YYV-Ya-ScJ" firstAttribute="centerY" secondItem="D9Z-4K-xoF" secondAttribute="centerY" id="NCp-cU-yfA"/>
+                            <constraint firstItem="YYV-Ya-ScJ" firstAttribute="centerX" secondItem="D9Z-4K-xoF" secondAttribute="centerX" id="xXg-PR-P7l"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="GIc-yD-KE9"/>
+                        <viewLayoutGuide key="safeArea" id="D9Z-4K-xoF"/>
                     </view>
-                    <navigationItem key="navigationItem" id="fgk-Ey-7I9"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qna-DV-abc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="50i-tT-Ijl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-135.19999999999999" y="149.77511244377811"/>
+            <point key="canvasLocation" x="-106" y="899"/>
         </scene>
         <!--地图显示-->
         <scene sceneID="pyu-ke-CK0">
@@ -107,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hXh-00-nb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-135" y="893"/>
+            <point key="canvasLocation" x="834" y="-217"/>
         </scene>
         <!--AR显示附近-->
         <scene sceneID="Ucz-8M-Z8L">
@@ -169,12 +149,117 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="9Sb-eJ-kCb" kind="relationship" relationship="rootViewController" id="zJI-gV-7vI"/>
+                        <segue destination="w1W-Vc-F22" kind="relationship" relationship="rootViewController" id="m3r-Ak-ITg"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2bv-1t-C3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-868" y="150"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="KBM-6T-Hve">
+            <objects>
+                <tableViewController id="w1W-Vc-F22" customClass="ViewController" customModule="AR_MAP" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="JgA-Tb-F55">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="w6q-87-RLT">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="wCV-rh-vTN" style="IBUITableViewCellStyleDefault" id="QFd-p3-mgF">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QFd-p3-mgF" id="zAX-jR-TQ5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="AR附近的路牌Demo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wCV-rh-vTN">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="1n9-83-WqY" kind="show" id="X1a-Tv-q84"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Smp-nh-MBU" style="IBUITableViewCellStyleDefault" id="Fvm-ws-BDH">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fvm-ws-BDH" id="OfM-iJ-Hvi">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="高德平面地图展示" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Smp-nh-MBU">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="14Z-oy-Nv5" kind="show" id="0bt-3O-p0m"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="5Wk-q6-ROB" style="IBUITableViewCellStyleDefault" id="6la-Cz-wIY">
+                                        <rect key="frame" x="0.0" y="88" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6la-Cz-wIY" id="J0l-Ze-Zjc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="漂流瓶Demo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Wk-q6-ROB">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="2hg-gs-Q6w" kind="show" id="RJi-rs-hpT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Pgu-ZH-UbM" style="IBUITableViewCellStyleDefault" id="jKO-0l-Hp6">
+                                        <rect key="frame" x="0.0" y="132" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jKO-0l-Hp6" id="FbN-9N-a9T">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="小功能测试" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pgu-ZH-UbM">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="fjw-Ej-dRs" kind="show" id="f8L-04-F8u"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="w1W-Vc-F22" id="E2e-Kh-mIs"/>
+                            <outlet property="delegate" destination="w1W-Vc-F22" id="SuG-lo-CBD"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="rvE-9O-JJK"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xJ0-LZ-X4P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-106" y="150"/>
         </scene>
     </scenes>
 </document>
