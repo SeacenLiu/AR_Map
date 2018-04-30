@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -54,16 +55,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYV-Ya-ScJ">
-                                <rect key="frame" x="172" y="350.5" width="31" height="30"/>
+                                <rect key="frame" x="172" y="168" width="31" height="30"/>
                                 <state key="normal" title="震姬"/>
                                 <connections>
                                     <action selector="shakeActionWithSender:" destination="fjw-Ej-dRs" eventType="touchUpInside" id="GbK-Lg-TkD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krl-if-elZ">
+                                <rect key="frame" x="156.5" y="350.5" width="62" height="30"/>
+                                <state key="normal" title="本地推送"/>
+                                <connections>
+                                    <action selector="localNotification:" destination="fjw-Ej-dRs" eventType="touchUpInside" id="QoC-Ng-fHx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YYV-Ya-ScJ" firstAttribute="centerY" secondItem="D9Z-4K-xoF" secondAttribute="centerY" id="NCp-cU-yfA"/>
+                            <constraint firstItem="krl-if-elZ" firstAttribute="centerX" secondItem="D9Z-4K-xoF" secondAttribute="centerX" id="F7f-pb-bQf"/>
+                            <constraint firstItem="YYV-Ya-ScJ" firstAttribute="centerY" secondItem="D9Z-4K-xoF" secondAttribute="centerY" multiplier="0.5" id="NCp-cU-yfA"/>
+                            <constraint firstItem="krl-if-elZ" firstAttribute="centerY" secondItem="D9Z-4K-xoF" secondAttribute="centerY" id="TiQ-M9-hAt"/>
                             <constraint firstItem="YYV-Ya-ScJ" firstAttribute="centerX" secondItem="D9Z-4K-xoF" secondAttribute="centerX" id="xXg-PR-P7l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D9Z-4K-xoF"/>
