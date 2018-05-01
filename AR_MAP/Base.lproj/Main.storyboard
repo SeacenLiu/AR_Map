@@ -46,6 +46,21 @@
             </objects>
             <point key="canvasLocation" x="833" y="523"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="J9w-WP-sPp">
+            <objects>
+                <viewController id="5y4-To-RYV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0bg-TF-THq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="bmU-VT-wQd"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HvY-vL-1Pn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1599" y="897"/>
+        </scene>
         <!--Add Controller-->
         <scene sceneID="Zf5-Sj-xgD">
             <objects>
@@ -310,6 +325,26 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="9Ql-YO-kjh" kind="show" id="z8y-Gz-gQa"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="6uD-Uo-h7A" style="IBUITableViewCellStyleDefault" id="6aQ-i0-Kee">
+                                        <rect key="frame" x="0.0" y="220" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6aQ-i0-Kee" id="KkA-f6-u0H">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="抽屉效果" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6uD-Uo-h7A">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="5y4-To-RYV" kind="modal" id="eL7-qW-EBZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

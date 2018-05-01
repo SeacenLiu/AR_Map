@@ -19,11 +19,12 @@ class FunctionController: UIViewController {
         let motionManager = CMMotionManager()
         let queue = OperationQueue()
         // 加速计
-        if motionManager.isAccelerometerActive {
-            motionManager.accelerometerUpdateInterval = 0.5
+        if motionManager.isAccelerometerAvailable {
+            motionManager.accelerometerUpdateInterval = 1
             motionManager.startAccelerometerUpdates(to: queue, withHandler: { (accelerometerData, error) in
                 if let err = error {
                     print(err)
+                    motionManager.stopAccelerometerUpdates()
                     return
                 }
                 guard let accelerometerData = accelerometerData else { return }
@@ -34,6 +35,9 @@ class FunctionController: UIViewController {
         } else {
             print("This device has no accelerometer")
         }
+        
+        // 陀螺仪
+        
     }
     
     /// 本地推送

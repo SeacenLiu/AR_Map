@@ -18,6 +18,7 @@
 		1421E27B2098506F00A4C208 /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421E27A2098506F00A4C208 /* AddController.swift */; };
 		1421E27E209853B200A4C208 /* SCAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421E27D209853B200A4C208 /* SCAddView.swift */; };
 		1421E280209855E800A4C208 /* SCAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1421E27F209855E800A4C208 /* SCAddView.xib */; };
+		1421E29020986B9A00A4C208 /* SCMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421E28F20986B9A00A4C208 /* SCMainController.swift */; };
 		14773BEE2093673A006242C6 /* ArroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14773BED2093673A006242C6 /* ArroundViewController.swift */; };
 		14773BF02094496F006242C6 /* ShowMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14773BEF2094496F006242C6 /* ShowMapController.swift */; };
 		14E76E6F209559760095BE75 /* bottle.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E76E6E209559760095BE75 /* bottle.png */; };
@@ -46,6 +47,7 @@
 		1421E27A2098506F00A4C208 /* AddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
 		1421E27D209853B200A4C208 /* SCAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCAddView.swift; sourceTree = "<group>"; };
 		1421E27F209855E800A4C208 /* SCAddView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SCAddView.xib; sourceTree = "<group>"; };
+		1421E28F20986B9A00A4C208 /* SCMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCMainController.swift; sourceTree = "<group>"; };
 		14773BED2093673A006242C6 /* ArroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArroundViewController.swift; sourceTree = "<group>"; };
 		14773BEF2094496F006242C6 /* ShowMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapController.swift; sourceTree = "<group>"; };
 		14E76E6E209559760095BE75 /* bottle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottle.png; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				141B109F2081F58100CDC7BB /* AR_MAP-Bridging-Header.h */,
 				141B10892081C23900CDC7BB /* AppDelegate.swift */,
 				141B108D2081C23900CDC7BB /* ViewController.swift */,
+				1421E29120986BA500A4C208 /* 抽屉效果 */,
 				1421E27C2098507800A4C208 /* 添加视图 */,
 				14E76E8A2096F6690095BE75 /* 小功能 */,
 				14E76E7A2095EF820095BE75 /* 漂流瓶 */,
@@ -122,6 +125,14 @@
 				1421E27F209855E800A4C208 /* SCAddView.xib */,
 			);
 			path = "添加视图";
+			sourceTree = "<group>";
+		};
+		1421E29120986BA500A4C208 /* 抽屉效果 */ = {
+			isa = PBXGroup;
+			children = (
+				1421E28F20986B9A00A4C208 /* SCMainController.swift */,
+			);
+			path = "抽屉效果";
 			sourceTree = "<group>";
 		};
 		14E76E782095EF3C0095BE75 /* 附近的路牌 */ = {
@@ -329,6 +340,7 @@
 				14E76E892096F6620095BE75 /* FunctionController.swift in Sources */,
 				14773BF02094496F006242C6 /* ShowMapController.swift in Sources */,
 				141B108A2081C23900CDC7BB /* AppDelegate.swift in Sources */,
+				1421E29020986B9A00A4C208 /* SCMainController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
