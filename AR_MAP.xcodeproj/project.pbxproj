@@ -15,6 +15,7 @@
 		141B10962081C23900CDC7BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141B10942081C23900CDC7BB /* LaunchScreen.storyboard */; };
 		141B10A42081F61E00CDC7BB /* SCLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B10A32081F61E00CDC7BB /* SCLocationManager.swift */; };
 		141B10A620821ACC00CDC7BB /* SCLocationNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B10A520821ACC00CDC7BB /* SCLocationNode.swift */; };
+		1421E27B2098506F00A4C208 /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421E27A2098506F00A4C208 /* AddController.swift */; };
 		14773BEE2093673A006242C6 /* ArroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14773BED2093673A006242C6 /* ArroundViewController.swift */; };
 		14773BF02094496F006242C6 /* ShowMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14773BEF2094496F006242C6 /* ShowMapController.swift */; };
 		14E76E6F209559760095BE75 /* bottle.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E76E6E209559760095BE75 /* bottle.png */; };
@@ -40,6 +41,7 @@
 		141B109F2081F58100CDC7BB /* AR_MAP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AR_MAP-Bridging-Header.h"; sourceTree = "<group>"; };
 		141B10A32081F61E00CDC7BB /* SCLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLocationManager.swift; sourceTree = "<group>"; };
 		141B10A520821ACC00CDC7BB /* SCLocationNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLocationNode.swift; sourceTree = "<group>"; };
+		1421E27A2098506F00A4C208 /* AddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
 		14773BED2093673A006242C6 /* ArroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArroundViewController.swift; sourceTree = "<group>"; };
 		14773BEF2094496F006242C6 /* ShowMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapController.swift; sourceTree = "<group>"; };
 		14E76E6E209559760095BE75 /* bottle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottle.png; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				141B109F2081F58100CDC7BB /* AR_MAP-Bridging-Header.h */,
 				141B10892081C23900CDC7BB /* AppDelegate.swift */,
 				141B108D2081C23900CDC7BB /* ViewController.swift */,
+				1421E27C2098507800A4C208 /* 添加视图 */,
 				14E76E8A2096F6690095BE75 /* 小功能 */,
 				14E76E7A2095EF820095BE75 /* 漂流瓶 */,
 				14E76E792095EF5A0095BE75 /* 平面地图展示 */,
@@ -105,6 +108,14 @@
 				14E76E8F20973C2A0095BE75 /* nico.jpg */,
 			);
 			path = AR_MAP;
+			sourceTree = "<group>";
+		};
+		1421E27C2098507800A4C208 /* 添加视图 */ = {
+			isa = PBXGroup;
+			children = (
+				1421E27A2098506F00A4C208 /* AddController.swift */,
+			);
+			path = "添加视图";
 			sourceTree = "<group>";
 		};
 		14E76E782095EF3C0095BE75 /* 附近的路牌 */ = {
@@ -305,6 +316,7 @@
 				141B108E2081C23900CDC7BB /* ViewController.swift in Sources */,
 				14E76E772095B64D0095BE75 /* ARBottleController.swift in Sources */,
 				141B10A42081F61E00CDC7BB /* SCLocationManager.swift in Sources */,
+				1421E27B2098506F00A4C208 /* AddController.swift in Sources */,
 				141B10A620821ACC00CDC7BB /* SCLocationNode.swift in Sources */,
 				14E76E892096F6620095BE75 /* FunctionController.swift in Sources */,
 				14773BF02094496F006242C6 /* ShowMapController.swift in Sources */,
