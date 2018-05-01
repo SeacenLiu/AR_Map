@@ -16,6 +16,8 @@
 		141B10A42081F61E00CDC7BB /* SCLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B10A32081F61E00CDC7BB /* SCLocationManager.swift */; };
 		141B10A620821ACC00CDC7BB /* SCLocationNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B10A520821ACC00CDC7BB /* SCLocationNode.swift */; };
 		1421E27B2098506F00A4C208 /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421E27A2098506F00A4C208 /* AddController.swift */; };
+		1421E27E209853B200A4C208 /* SCAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421E27D209853B200A4C208 /* SCAddView.swift */; };
+		1421E280209855E800A4C208 /* SCAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1421E27F209855E800A4C208 /* SCAddView.xib */; };
 		14773BEE2093673A006242C6 /* ArroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14773BED2093673A006242C6 /* ArroundViewController.swift */; };
 		14773BF02094496F006242C6 /* ShowMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14773BEF2094496F006242C6 /* ShowMapController.swift */; };
 		14E76E6F209559760095BE75 /* bottle.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E76E6E209559760095BE75 /* bottle.png */; };
@@ -42,6 +44,8 @@
 		141B10A32081F61E00CDC7BB /* SCLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLocationManager.swift; sourceTree = "<group>"; };
 		141B10A520821ACC00CDC7BB /* SCLocationNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLocationNode.swift; sourceTree = "<group>"; };
 		1421E27A2098506F00A4C208 /* AddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
+		1421E27D209853B200A4C208 /* SCAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCAddView.swift; sourceTree = "<group>"; };
+		1421E27F209855E800A4C208 /* SCAddView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SCAddView.xib; sourceTree = "<group>"; };
 		14773BED2093673A006242C6 /* ArroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArroundViewController.swift; sourceTree = "<group>"; };
 		14773BEF2094496F006242C6 /* ShowMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapController.swift; sourceTree = "<group>"; };
 		14E76E6E209559760095BE75 /* bottle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottle.png; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				1421E27A2098506F00A4C208 /* AddController.swift */,
+				1421E27D209853B200A4C208 /* SCAddView.swift */,
+				1421E27F209855E800A4C208 /* SCAddView.xib */,
 			);
 			path = "添加视图";
 			sourceTree = "<group>";
@@ -235,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1421E280209855E800A4C208 /* SCAddView.xib in Resources */,
 				14E76E9020973C2A0095BE75 /* nico.jpg in Resources */,
 				141B108C2081C23900CDC7BB /* art.scnassets in Resources */,
 				141B10962081C23900CDC7BB /* LaunchScreen.storyboard in Resources */,
@@ -314,6 +321,7 @@
 				14773BEE2093673A006242C6 /* ArroundViewController.swift in Sources */,
 				14E76E872096F1F60095BE75 /* SVProgressHUD+Ex.swift in Sources */,
 				141B108E2081C23900CDC7BB /* ViewController.swift in Sources */,
+				1421E27E209853B200A4C208 /* SCAddView.swift in Sources */,
 				14E76E772095B64D0095BE75 /* ARBottleController.swift in Sources */,
 				141B10A42081F61E00CDC7BB /* SCLocationManager.swift in Sources */,
 				1421E27B2098506F00A4C208 /* AddController.swift in Sources */,

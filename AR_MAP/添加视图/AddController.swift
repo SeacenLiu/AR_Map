@@ -16,6 +16,10 @@ class AddController: UIViewController {
     
     @IBAction func addClick(_ sender: Any) {
         print("点击了添加按钮")
+        // 1. 实例化视图
+        let v = SCAddView.addView() //SCAddView()
+        // 2. 显示视图
+        v.show()
     }
 
 }
