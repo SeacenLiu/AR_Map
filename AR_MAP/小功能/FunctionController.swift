@@ -35,9 +35,6 @@ class FunctionController: UIViewController {
         } else {
             print("This device has no accelerometer")
         }
-        
-        // 陀螺仪
-        
     }
     
     /// 本地推送
