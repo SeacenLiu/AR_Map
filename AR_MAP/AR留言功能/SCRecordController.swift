@@ -1,0 +1,96 @@
+//
+//  SCRecordController.swift
+//  AR_MAP
+//
+//  Created by SeacenLiu on 2018/5/3.
+//  Copyright © 2018年 成. All rights reserved.
+//
+
+import ARKit
+
+class SCRecordController: UIViewController {
+
+    // MARK: - view life cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.addNode()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        sceneView.session.run(configuration)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        sceneView.session.pause()
+    }
+    
+    // MARK: - AR
+    private lazy var sceneView = ARSCNView(frame: UIScreen.main.bounds)
+    
+    private lazy var configuration = ARWorldTrackingConfiguration()
+    
+}
+
+// MARK - set up AR
+private extension SCRecordController {
+    func addNode() {
+        let box = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
+        let color: UIColor = #colorLiteral(red: 0.3411764706, green: 0.9803921569, blue: 1, alpha: 1)
+        box.materials.first?.diffuse.contents = color
+        box.materials.first?.transparency = 0.5
+        let node = SCNNode(geometry: box)
+        
+        node.transform = randomTransfrom(distance: 1)
+        print(node.position)
+        
+        sceneView.scene.rootNode.addChildNode(node)
+        
+        
+    }
+    
+    func randomAction(node: SCNNode) {
+        let nullNode = SCNNode()
+        nullNode.transform = randomTransfrom(distance: 1)
+        let goAction = SCNAction.move(to: nullNode.position, duration: 2)
+        let backAction = SCNAction.move(to: node.position, duration: 2)
+        let sequenceAction = SCNAction.sequence([goAction, backAction])
+        let repeatAction = SCNAction.repeatForever(sequenceAction)
+        print(nullNode.position)
+        
+//        node.runAction(<#T##action: SCNAction##SCNAction#>)
+    }
+    
+    func randomTransfrom(distance: Float) -> SCNMatrix4 {
+        let randNumX = Float(drand48() * 2.0)
+        let randNumY = Float(drand48() * 2.0)
+        let translation = SCNMatrix4Translate(SCNMatrix4Identity, 0, 0, distance)
+        let xRotation = SCNMatrix4MakeRotation(Float.pi * randNumX, 1, 0, 0)
+        let yRotation = SCNMatrix4MakeRotation(Float.pi * randNumY, 0, 1, 0)
+        return SCNMatrix4Mult(SCNMatrix4Mult(translation, xRotation), yRotation)
+    }
+    
+}
+
+// MARK - set up UI
+private extension SCRecordController {
+    func setupUI() {
+        view.backgroundColor = .lightGray
+        // 设置导航栏
+        loadNavigation()
+        // 设置AR界面
+        view.addSubview(sceneView)
+        // 其他UI设置
+        
+    }
+    
+    func loadNavigation() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
+}
