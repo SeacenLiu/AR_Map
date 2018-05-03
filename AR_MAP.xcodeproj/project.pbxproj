@@ -20,6 +20,8 @@
 		1421E280209855E800A4C208 /* SCAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1421E27F209855E800A4C208 /* SCAddView.xib */; };
 		1421E29020986B9A00A4C208 /* SCMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421E28F20986B9A00A4C208 /* SCMainController.swift */; };
 		1421E353209B1A2B00A4C208 /* SCRecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421E352209B1A2B00A4C208 /* SCRecordController.swift */; };
+		1421E356209B400600A4C208 /* SCRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421E355209B400600A4C208 /* SCRecordView.swift */; };
+		1421E358209B40AC00A4C208 /* SCNVector3+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421E357209B40AC00A4C208 /* SCNVector3+Ex.swift */; };
 		14773BEE2093673A006242C6 /* ArroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14773BED2093673A006242C6 /* ArroundViewController.swift */; };
 		14773BF02094496F006242C6 /* ShowMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14773BEF2094496F006242C6 /* ShowMapController.swift */; };
 		14E76E6F209559760095BE75 /* bottle.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E76E6E209559760095BE75 /* bottle.png */; };
@@ -50,6 +52,8 @@
 		1421E27F209855E800A4C208 /* SCAddView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SCAddView.xib; sourceTree = "<group>"; };
 		1421E28F20986B9A00A4C208 /* SCMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCMainController.swift; sourceTree = "<group>"; };
 		1421E352209B1A2B00A4C208 /* SCRecordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCRecordController.swift; sourceTree = "<group>"; };
+		1421E355209B400600A4C208 /* SCRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCRecordView.swift; sourceTree = "<group>"; };
+		1421E357209B40AC00A4C208 /* SCNVector3+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Ex.swift"; sourceTree = "<group>"; };
 		14773BED2093673A006242C6 /* ArroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArroundViewController.swift; sourceTree = "<group>"; };
 		14773BEF2094496F006242C6 /* ShowMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapController.swift; sourceTree = "<group>"; };
 		14E76E6E209559760095BE75 /* bottle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottle.png; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				1421E352209B1A2B00A4C208 /* SCRecordController.swift */,
+				1421E355209B400600A4C208 /* SCRecordView.swift */,
+				1421E357209B40AC00A4C208 /* SCNVector3+Ex.swift */,
 			);
 			path = "AR留言功能";
 			sourceTree = "<group>";
@@ -339,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1421E358209B40AC00A4C208 /* SCNVector3+Ex.swift in Sources */,
 				14E76E71209564350095BE75 /* LocationData.swift in Sources */,
 				14773BEE2093673A006242C6 /* ArroundViewController.swift in Sources */,
 				14E76E872096F1F60095BE75 /* SVProgressHUD+Ex.swift in Sources */,
@@ -350,6 +357,7 @@
 				141B10A620821ACC00CDC7BB /* SCLocationNode.swift in Sources */,
 				14E76E892096F6620095BE75 /* FunctionController.swift in Sources */,
 				1421E353209B1A2B00A4C208 /* SCRecordController.swift in Sources */,
+				1421E356209B400600A4C208 /* SCRecordView.swift in Sources */,
 				14773BF02094496F006242C6 /* ShowMapController.swift in Sources */,
 				141B108A2081C23900CDC7BB /* AppDelegate.swift in Sources */,
 				1421E29020986B9A00A4C208 /* SCMainController.swift in Sources */,

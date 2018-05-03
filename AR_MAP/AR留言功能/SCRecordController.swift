@@ -38,7 +38,7 @@ class SCRecordController: UIViewController {
     
 }
 
-// MARK - set up AR
+// MARK: - set up AR
 private extension SCRecordController {
     func addNode() {
         let box = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
@@ -116,13 +116,7 @@ private extension SCRecordController {
     
 }
 
-extension SCNVector3 {
-    func distance(to anotherVector: SCNVector3) -> Double {
-        return Double(sqrt(pow(anotherVector.x - x, 2) + pow(anotherVector.z - z, 2) + pow(anotherVector.y - y, 2)))
-    }
-}
-
-// MARK - set up UI
+// MARK: - set up UI
 private extension SCRecordController {
     func setupUI() {
         view.backgroundColor = .lightGray
