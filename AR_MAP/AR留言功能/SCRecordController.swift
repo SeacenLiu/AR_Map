@@ -31,11 +31,72 @@ class SCRecordController: UIViewController {
         sceneView.session.pause()
     }
     
+    // MARK: - show view relate
+    private var recordView: SCRecordView?
+    
+    private lazy var dismissTap: UITapGestureRecognizer = {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dissmissRecordTap(gesture:)))
+        tap.isEnabled = false
+        return tap
+    }()
+    
     // MARK: - AR
     private lazy var sceneView = ARSCNView(frame: UIScreen.main.bounds)
     
     private lazy var configuration = ARWorldTrackingConfiguration()
     
+}
+
+// MARK: - gesture
+private extension SCRecordController {
+    @objc func dissmissRecordTap(gesture: UITapGestureRecognizer) {
+        if let _ = recordView {
+            dismissRecordView()
+            // 禁用dismiss手势
+            gesture.isEnabled = false
+        }
+    }
+    
+    @objc func selectNodeTapAction(gesture: UITapGestureRecognizer) {
+        let point = gesture.location(in: sceneView)
+        let results = sceneView.hitTest(point, options: [SCNHitTestOption.boundingBoxOnly : true, SCNHitTestOption.firstFoundOnly: true])
+        if let node = results.first?.node {
+            // 先移除该结点所有动画
+            node.removeAllActions()
+            // 执行被结点被选中动画
+            selectAction(node: node)
+            // 显示留言视图
+            showRecordView()
+            // 开启dismiss手势
+            dismissTap.isEnabled = true
+        }
+    }
+    
+    func addGesture() {
+        let nodeTap = UITapGestureRecognizer(target: self, action: #selector(selectNodeTapAction(gesture:)))
+        sceneView.addGestureRecognizer(nodeTap)
+        sceneView.addGestureRecognizer(dismissTap)
+    }
+}
+
+// MARK: - set up record view
+private extension SCRecordController {
+    func showRecordView() {
+        let horizontalMargin: CGFloat  = 30
+        let verticalMargin: CGFloat = 40
+        let width = UIScreen.main.bounds.width - horizontalMargin * 2
+        let height = UIScreen.main.bounds.height - verticalMargin * 2
+        let rect = CGRect(x: horizontalMargin, y: verticalMargin, width: width, height: height)
+        recordView = SCRecordView(frame: rect)
+        view.addSubview(recordView!)
+    }
+    
+    func dismissRecordView() {
+        if let _ = recordView {
+            recordView?.removeFromSuperview()
+            recordView = nil
+        }
+    }
 }
 
 // MARK: - set up AR
@@ -88,7 +149,7 @@ private extension SCRecordController {
     }
     
     func randomAction() {
-        
+        // TODO: 随机结点动画
     }
     
     func randomTransfrom(distance: Float) -> SCNMatrix4 {
@@ -98,20 +159,6 @@ private extension SCRecordController {
         let xRotation = SCNMatrix4MakeRotation(Float.pi * randNumX, 1, 0, 0)
         let yRotation = SCNMatrix4MakeRotation(Float.pi * randNumY, 0, 1, 0)
         return SCNMatrix4Mult(SCNMatrix4Mult(translation, xRotation), yRotation)
-    }
-    
-    @objc func selectNodeTapAction(gesture: UITapGestureRecognizer) {
-        let point = gesture.location(in: sceneView)
-        let results = sceneView.hitTest(point, options: [SCNHitTestOption.boundingBoxOnly : true, SCNHitTestOption.firstFoundOnly: true])
-        if let node = results.first?.node {
-            node.removeAllActions()
-            selectAction(node: node)
-        }
-    }
-    
-    func addGesture() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(selectNodeTapAction(gesture:)))
-        sceneView.addGestureRecognizer(tap);
     }
     
 }
@@ -124,7 +171,7 @@ private extension SCRecordController {
         loadNavigation()
         // 设置AR界面
         view.addSubview(sceneView)
-        // 其他UI设置
+        // TODO: 其他UI设置
         
     }
     

@@ -13,6 +13,8 @@ class SCRecordView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .lightGray
+        layer.cornerRadius = 10
+        layer.masksToBounds = true
     }
     
     required init?(coder aDecoder: NSCoder) {
