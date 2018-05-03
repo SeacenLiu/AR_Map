@@ -25,9 +25,12 @@ class SCRecordView: UIView {
         transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
         let view = UIApplication.shared.keyWindow?.rootViewController?.view
         view?.addSubview(self)
-        UIView.animate(withDuration: 0.25) {
+//        UIView.animate(withDuration: 0.25) {
+//            self.transform = CGAffineTransform.identity
+//        }
+        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: .curveLinear, animations: {
             self.transform = CGAffineTransform.identity
-        }
+        })
     }
     
     func close() {
