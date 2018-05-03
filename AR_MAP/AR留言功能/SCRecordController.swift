@@ -155,6 +155,7 @@ private extension SCRecordController {
     func randomTransfrom(distance: Float) -> SCNMatrix4 {
         let randNumX = Float(drand48() * 2.0)
         let randNumY = Float(drand48() * 2.0)
+        print("随机X: \(randNumX) 随机Y: \(randNumY)")
         let translation = SCNMatrix4Translate(SCNMatrix4Identity, 0, 0, distance)
         let xRotation = SCNMatrix4MakeRotation(Float.pi * randNumX, 1, 0, 0)
         let yRotation = SCNMatrix4MakeRotation(Float.pi * randNumY, 0, 1, 0)
