@@ -17,6 +17,7 @@ class SCRecordController: UIViewController {
         sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.addNode()
+            self.addGesture()
         }
     }
     
@@ -54,6 +55,22 @@ private extension SCRecordController {
         randomAction(node: node)
     }
     
+    func selectAction(node: SCNNode) {
+        let scaleOut = SCNAction.scale(by: 2, duration: 0.2)
+        let fadeOut = SCNAction.fadeOut(duration: 0.2)
+        let group = SCNAction.group([scaleOut, fadeOut])
+        let sequence = SCNAction.sequence([group, SCNAction.removeFromParentNode()])
+        node.runAction(sequence)
+    }
+    
+    func unSelectAction(node: SCNNode) {
+        let scaleIn = SCNAction.scale(by: 2, duration: 0.2)
+        let fadeIn = SCNAction.fadeOut(duration: 0.2)
+        let group = SCNAction.group([scaleIn, fadeIn])
+        let sequence = SCNAction.sequence([group, SCNAction.removeFromParentNode()])
+        node.runAction(sequence)
+    }
+    
     func randomAction(node: SCNNode) {
         let nullNode = SCNNode()
         nullNode.transform = randomTransfrom(distance: 1)
@@ -61,7 +78,9 @@ private extension SCRecordController {
         let toPosition = nullNode.position
         let duration = fromPosition.distance(to: toPosition) * 5
         let goAction = SCNAction.move(to: toPosition, duration: duration)
+        goAction.timingMode = .easeInEaseOut
         let backAction = SCNAction.move(to: fromPosition, duration: duration)
+        backAction.timingMode = .easeInEaseOut
         let sequenceAction = SCNAction.sequence([goAction, backAction])
         let repeatAction = SCNAction.repeatForever(sequenceAction)
         print(nullNode.position)
@@ -79,6 +98,20 @@ private extension SCRecordController {
         let xRotation = SCNMatrix4MakeRotation(Float.pi * randNumX, 1, 0, 0)
         let yRotation = SCNMatrix4MakeRotation(Float.pi * randNumY, 0, 1, 0)
         return SCNMatrix4Mult(SCNMatrix4Mult(translation, xRotation), yRotation)
+    }
+    
+    @objc func selectNodeTapAction(gesture: UITapGestureRecognizer) {
+        let point = gesture.location(in: sceneView)
+        let results = sceneView.hitTest(point, options: [SCNHitTestOption.boundingBoxOnly : true, SCNHitTestOption.firstFoundOnly: true])
+        if let node = results.first?.node {
+            node.removeAllActions()
+            selectAction(node: node)
+        }
+    }
+    
+    func addGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(selectNodeTapAction(gesture:)))
+        sceneView.addGestureRecognizer(tap);
     }
     
 }
