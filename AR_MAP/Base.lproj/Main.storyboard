@@ -118,20 +118,56 @@
                                     <action selector="localNotification:" destination="fjw-Ej-dRs" eventType="touchUpInside" id="QoC-Ng-fHx"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机与水平面的夹角" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ag1-7G-Lg8">
+                                <rect key="frame" x="109.5" y="518" width="156" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机绕自身旋转的速度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7og-cZ-yrH">
+                                <rect key="frame" x="100.5" y="590" width="174" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ElU-in-6a9">
+                                <rect key="frame" x="179.5" y="626" width="16" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2H-Hm-awF">
+                                <rect key="frame" x="179.5" y="554" width="16" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ElU-in-6a9" firstAttribute="centerX" secondItem="D9Z-4K-xoF" secondAttribute="centerX" id="0OE-wV-p9s"/>
+                            <constraint firstItem="ElU-in-6a9" firstAttribute="top" secondItem="7og-cZ-yrH" secondAttribute="bottom" constant="15" id="82z-wn-tt0"/>
+                            <constraint firstItem="ag1-7G-Lg8" firstAttribute="centerX" secondItem="D9Z-4K-xoF" secondAttribute="centerX" id="8vH-mu-77q"/>
                             <constraint firstItem="krl-if-elZ" firstAttribute="centerX" secondItem="D9Z-4K-xoF" secondAttribute="centerX" id="F7f-pb-bQf"/>
                             <constraint firstItem="YYV-Ya-ScJ" firstAttribute="centerY" secondItem="D9Z-4K-xoF" secondAttribute="centerY" multiplier="0.5" id="NCp-cU-yfA"/>
                             <constraint firstItem="krl-if-elZ" firstAttribute="centerY" secondItem="D9Z-4K-xoF" secondAttribute="centerY" id="TiQ-M9-hAt"/>
+                            <constraint firstItem="7og-cZ-yrH" firstAttribute="centerX" secondItem="D9Z-4K-xoF" secondAttribute="centerX" id="aC5-MO-ldZ"/>
+                            <constraint firstItem="D9Z-4K-xoF" firstAttribute="bottom" secondItem="ElU-in-6a9" secondAttribute="bottom" constant="20" id="f4i-9d-rar"/>
+                            <constraint firstItem="j2H-Hm-awF" firstAttribute="top" secondItem="ag1-7G-Lg8" secondAttribute="bottom" constant="15" id="ftz-3b-n5z"/>
+                            <constraint firstItem="j2H-Hm-awF" firstAttribute="centerX" secondItem="D9Z-4K-xoF" secondAttribute="centerX" id="iRW-YU-2XM"/>
+                            <constraint firstItem="7og-cZ-yrH" firstAttribute="top" secondItem="j2H-Hm-awF" secondAttribute="bottom" constant="15" id="vf0-MF-UNX"/>
                             <constraint firstItem="YYV-Ya-ScJ" firstAttribute="centerX" secondItem="D9Z-4K-xoF" secondAttribute="centerX" id="xXg-PR-P7l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D9Z-4K-xoF"/>
                     </view>
+                    <connections>
+                        <outlet property="xyThetaLb" destination="ElU-in-6a9" id="pe6-BB-QPN"/>
+                        <outlet property="zThetaLb" destination="j2H-Hm-awF" id="SaM-YB-b8B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="50i-tT-Ijl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-106" y="899"/>
+            <point key="canvasLocation" x="-106.40000000000001" y="898.2008995502249"/>
         </scene>
         <!--地图显示-->
         <scene sceneID="pyu-ke-CK0">

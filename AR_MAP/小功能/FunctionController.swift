@@ -12,7 +12,10 @@ import UserNotifications
 import CoreMotion
 
 class FunctionController: UIViewController {
-
+    
+    @IBOutlet weak var zThetaLb: UILabel!
+    @IBOutlet weak var xyThetaLb: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +33,11 @@ class FunctionController: UIViewController {
                 guard let accelerometerData = accelerometerData else { return }
                 let zTheta = atan2(accelerometerData.acceleration.z, sqrt(accelerometerData.acceleration.x*accelerometerData.acceleration.x+accelerometerData.acceleration.y*accelerometerData.acceleration.y))/Double.pi*(-90.0)*2.0-90.0
                 let xyTheta = atan2(accelerometerData.acceleration.x,accelerometerData.acceleration.y)/Double.pi*180.0
-                print("手机与水平面的夹角是:\(-zTheta)，手机绕自身旋转的速度是:\(xyTheta)")
+//                print("手机与水平面的夹角是:\(-zTheta)，手机绕自身旋转的速度是:\(xyTheta)")
+                DispatchQueue.main.async {
+                    self.zThetaLb.text = "\(-zTheta)"
+                    self.xyThetaLb.text = "\(xyTheta)"
+                }
             })
         } else {
             print("This device has no accelerometer")
