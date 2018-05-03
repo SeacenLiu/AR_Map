@@ -51,19 +51,25 @@ private extension SCRecordController {
         
         sceneView.scene.rootNode.addChildNode(node)
         
-        
+        randomAction(node: node)
     }
     
     func randomAction(node: SCNNode) {
         let nullNode = SCNNode()
         nullNode.transform = randomTransfrom(distance: 1)
-        let goAction = SCNAction.move(to: nullNode.position, duration: 2)
-        let backAction = SCNAction.move(to: node.position, duration: 2)
+        let fromPosition = node.position
+        let toPosition = nullNode.position
+        let duration = fromPosition.distance(to: toPosition) * 5
+        let goAction = SCNAction.move(to: toPosition, duration: duration)
+        let backAction = SCNAction.move(to: fromPosition, duration: duration)
         let sequenceAction = SCNAction.sequence([goAction, backAction])
         let repeatAction = SCNAction.repeatForever(sequenceAction)
         print(nullNode.position)
+        node.runAction(repeatAction)
+    }
+    
+    func randomAction() {
         
-//        node.runAction(<#T##action: SCNAction##SCNAction#>)
     }
     
     func randomTransfrom(distance: Float) -> SCNMatrix4 {
@@ -75,6 +81,12 @@ private extension SCRecordController {
         return SCNMatrix4Mult(SCNMatrix4Mult(translation, xRotation), yRotation)
     }
     
+}
+
+extension SCNVector3 {
+    func distance(to anotherVector: SCNVector3) -> Double {
+        return Double(sqrt(pow(anotherVector.x - x, 2) + pow(anotherVector.z - z, 2) + pow(anotherVector.y - y, 2)))
+    }
 }
 
 // MARK - set up UI
