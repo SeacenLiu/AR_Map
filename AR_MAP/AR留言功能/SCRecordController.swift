@@ -88,12 +88,12 @@ private extension SCRecordController {
         let height = UIScreen.main.bounds.height - verticalMargin * 2
         let rect = CGRect(x: horizontalMargin, y: verticalMargin, width: width, height: height)
         recordView = SCRecordView(frame: rect)
-        view.addSubview(recordView!)
+        recordView?.show()
     }
     
     func dismissRecordView() {
         if let _ = recordView {
-            recordView?.removeFromSuperview()
+            recordView?.close()
             recordView = nil
         }
     }

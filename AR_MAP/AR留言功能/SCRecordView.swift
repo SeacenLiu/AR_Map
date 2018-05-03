@@ -21,4 +21,21 @@ class SCRecordView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func show() {
+        transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        let view = UIApplication.shared.keyWindow?.rootViewController?.view
+        view?.addSubview(self)
+        UIView.animate(withDuration: 0.25) {
+            self.transform = CGAffineTransform.identity
+        }
+    }
+    
+    func close() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        }) { (_) in
+            self.removeFromSuperview()
+        }
+    }
+    
 }
