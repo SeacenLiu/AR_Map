@@ -102,15 +102,17 @@ private extension SCRecordController {
 // MARK: - set up AR
 private extension SCRecordController {
     func addNode() {
+        let emptyNode = SCNNode()
+        emptyNode.transform = randomTransfrom(distance: 1)
+        
         let box = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
         let color: UIColor = #colorLiteral(red: 0.3411764706, green: 0.9803921569, blue: 1, alpha: 1)
         box.materials.first?.diffuse.contents = color
         box.materials.first?.transparency = 0.5
         let node = SCNNode(geometry: box)
         
-        node.transform = randomTransfrom(distance: 1)
+        node.position = emptyNode.position
         print(node.position)
-        
         sceneView.scene.rootNode.addChildNode(node)
         
         randomAction(node: node)
@@ -150,6 +152,17 @@ private extension SCRecordController {
     
     func randomAction() {
         // TODO: 随机结点动画
+    }
+    
+    func randomTransfrom() -> (xAngle: Float, yAngle: Float, transfrom: SCNMatrix4) {
+        let randNumX = Float(drand48() * 2.0)
+        let randNumY = Float(drand48() * 2.0)
+        print("随机X: \(randNumX) 随机Y: \(randNumY)")
+        let xAngle = Float.pi * randNumX
+        let yAngle = Float.pi * randNumY
+        let xRotation = SCNMatrix4MakeRotation(xAngle, 1, 0, 0)
+        let yRotation = SCNMatrix4MakeRotation(yAngle, 0, 1, 0)
+        return (xAngle, yAngle, SCNMatrix4Mult(xRotation, yRotation))
     }
     
     func randomTransfrom(distance: Float) -> SCNMatrix4 {
