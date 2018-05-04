@@ -72,7 +72,7 @@ private extension SCRecordController {
             // 选中结点
             selectNode = node
             // 先移除该结点所有动画
-            node.removeAllActions()
+//            node.isPaused = true
             // 执行被结点被选中动画
             selectAction(node: node)
             // 显示留言视图
@@ -129,19 +129,19 @@ private extension SCRecordController {
     }
     
     func selectAction(node: SCNNode) {
+        print("selectAction")
         let scaleOut = SCNAction.scale(by: 2, duration: 0.2)
         let fadeOut = SCNAction.fadeOut(duration: 0.2)
         let group = SCNAction.group([scaleOut, fadeOut])
-//        let sequence = SCNAction.sequence([group, SCNAction.removeFromParentNode()])
         node.runAction(group)
     }
     
     func unSelectAction(node: SCNNode) {
-        let scaleIn = SCNAction.scale(by: 2, duration: 0.2)
-        let fadeIn = SCNAction.fadeOut(duration: 0.2)
+        print("unSelectAction")
+        let scaleIn = SCNAction.scale(by: 0.5, duration: 0.2)
+        let fadeIn = SCNAction.fadeIn(duration: 0.2)
         let group = SCNAction.group([scaleIn, fadeIn])
-        let sequence = SCNAction.sequence([group, SCNAction.removeFromParentNode()])
-        node.runAction(sequence)
+        node.runAction(group)
     }
     
     func randomAction(node: SCNNode) {
