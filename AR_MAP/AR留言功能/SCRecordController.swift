@@ -71,8 +71,8 @@ private extension SCRecordController {
         if let node = results.first?.node {
             // 选中结点
             selectNode = node
-            // 先移除该结点所有动画
-//            node.isPaused = true
+            // 先移除该结点移动动画
+            node.removeAction(forKey: "move")
             // 执行被结点被选中动画
             selectAction(node: node)
             // 显示留言视图
@@ -125,7 +125,7 @@ private extension SCRecordController {
         print(node.position)
         sceneView.scene.rootNode.addChildNode(node)
         
-//        randomAction(node: node)
+        randomAction(node: node)
     }
     
     func selectAction(node: SCNNode) {
@@ -157,7 +157,8 @@ private extension SCRecordController {
         let sequenceAction = SCNAction.sequence([goAction, backAction])
         let repeatAction = SCNAction.repeatForever(sequenceAction)
         print(emptyNode.position)
-        node.runAction(repeatAction)
+        node.runAction(repeatAction, forKey: "move")
+//        node.runAction(repeatAction)
     }
     
     func randomAction() {
