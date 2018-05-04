@@ -15,6 +15,7 @@ class SCRecordController: UIViewController {
         super.viewDidLoad()
         setupUI()
         sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
+        sceneView.showsStatistics = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.addNode()
             self.addGesture()
@@ -40,6 +41,8 @@ class SCRecordController: UIViewController {
         return tap
     }()
     
+    private var selectNode: SCNNode?
+    
     // MARK: - AR
     private lazy var sceneView = ARSCNView(frame: UIScreen.main.bounds)
     
@@ -54,6 +57,11 @@ private extension SCRecordController {
             dismissRecordView()
             // 禁用dismiss手势
             gesture.isEnabled = false
+            // 恢复被选中结点
+            if let node = selectNode {
+                unSelectAction(node: node)
+            }
+            selectNode = nil
         }
     }
     
@@ -61,6 +69,8 @@ private extension SCRecordController {
         let point = gesture.location(in: sceneView)
         let results = sceneView.hitTest(point, options: [SCNHitTestOption.boundingBoxOnly : true, SCNHitTestOption.firstFoundOnly: true])
         if let node = results.first?.node {
+            // 选中结点
+            selectNode = node
             // 先移除该结点所有动画
             node.removeAllActions()
             // 执行被结点被选中动画
@@ -115,15 +125,15 @@ private extension SCRecordController {
         print(node.position)
         sceneView.scene.rootNode.addChildNode(node)
         
-        randomAction(node: node)
+//        randomAction(node: node)
     }
     
     func selectAction(node: SCNNode) {
         let scaleOut = SCNAction.scale(by: 2, duration: 0.2)
         let fadeOut = SCNAction.fadeOut(duration: 0.2)
         let group = SCNAction.group([scaleOut, fadeOut])
-        let sequence = SCNAction.sequence([group, SCNAction.removeFromParentNode()])
-        node.runAction(sequence)
+//        let sequence = SCNAction.sequence([group, SCNAction.removeFromParentNode()])
+        node.runAction(group)
     }
     
     func unSelectAction(node: SCNNode) {
@@ -135,10 +145,10 @@ private extension SCRecordController {
     }
     
     func randomAction(node: SCNNode) {
-        let nullNode = SCNNode()
-        nullNode.transform = randomTransfrom(distance: 1)
+        let emptyNode = SCNNode()
+        emptyNode.transform = randomTransfrom(distance: 1)
         let fromPosition = node.position
-        let toPosition = nullNode.position
+        let toPosition = emptyNode.position
         let duration = fromPosition.distance(to: toPosition) * 5
         let goAction = SCNAction.move(to: toPosition, duration: duration)
         goAction.timingMode = .easeInEaseOut
@@ -146,23 +156,12 @@ private extension SCRecordController {
         backAction.timingMode = .easeInEaseOut
         let sequenceAction = SCNAction.sequence([goAction, backAction])
         let repeatAction = SCNAction.repeatForever(sequenceAction)
-        print(nullNode.position)
+        print(emptyNode.position)
         node.runAction(repeatAction)
     }
     
     func randomAction() {
         // TODO: 随机结点动画
-    }
-    
-    func randomTransfrom() -> (xAngle: Float, yAngle: Float, transfrom: SCNMatrix4) {
-        let randNumX = Float(drand48() * 2.0)
-        let randNumY = Float(drand48() * 2.0)
-        print("随机X: \(randNumX) 随机Y: \(randNumY)")
-        let xAngle = Float.pi * randNumX
-        let yAngle = Float.pi * randNumY
-        let xRotation = SCNMatrix4MakeRotation(xAngle, 1, 0, 0)
-        let yRotation = SCNMatrix4MakeRotation(yAngle, 0, 1, 0)
-        return (xAngle, yAngle, SCNMatrix4Mult(xRotation, yRotation))
     }
     
     func randomTransfrom(distance: Float) -> SCNMatrix4 {
