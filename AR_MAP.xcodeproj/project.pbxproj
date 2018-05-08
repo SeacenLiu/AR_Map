@@ -25,6 +25,7 @@
 		1421E35A209C8A7300A4C208 /* SCBaseNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421E359209C8A7300A4C208 /* SCBaseNode.swift */; };
 		14773BEE2093673A006242C6 /* ArroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14773BED2093673A006242C6 /* ArroundViewController.swift */; };
 		14773BF02094496F006242C6 /* ShowMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14773BEF2094496F006242C6 /* ShowMapController.swift */; };
+		14DC84F720A1987300F651BD /* SCPositionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC84F620A1987300F651BD /* SCPositionManager.swift */; };
 		14E76E6F209559760095BE75 /* bottle.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E76E6E209559760095BE75 /* bottle.png */; };
 		14E76E71209564350095BE75 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E76E70209564350095BE75 /* LocationData.swift */; };
 		14E76E7320956D170095BE75 /* pointData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14E76E7220956D160095BE75 /* pointData.plist */; };
@@ -58,6 +59,7 @@
 		1421E359209C8A7300A4C208 /* SCBaseNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCBaseNode.swift; sourceTree = "<group>"; };
 		14773BED2093673A006242C6 /* ArroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArroundViewController.swift; sourceTree = "<group>"; };
 		14773BEF2094496F006242C6 /* ShowMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapController.swift; sourceTree = "<group>"; };
+		14DC84F620A1987300F651BD /* SCPositionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCPositionManager.swift; sourceTree = "<group>"; };
 		14E76E6E209559760095BE75 /* bottle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottle.png; sourceTree = "<group>"; };
 		14E76E70209564350095BE75 /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
 		14E76E7220956D160095BE75 /* pointData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = pointData.plist; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				1421E355209B400600A4C208 /* SCRecordView.swift */,
 				1421E357209B40AC00A4C208 /* SCNVector3+Ex.swift */,
 				1421E359209C8A7300A4C208 /* SCBaseNode.swift */,
+				14DC84F620A1987300F651BD /* SCPositionManager.swift */,
 			);
 			path = "AR留言功能";
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				14E76E872096F1F60095BE75 /* SVProgressHUD+Ex.swift in Sources */,
 				141B108E2081C23900CDC7BB /* ViewController.swift in Sources */,
 				1421E27E209853B200A4C208 /* SCAddView.swift in Sources */,
+				14DC84F720A1987300F651BD /* SCPositionManager.swift in Sources */,
 				14E76E772095B64D0095BE75 /* ARBottleController.swift in Sources */,
 				141B10A42081F61E00CDC7BB /* SCLocationManager.swift in Sources */,
 				1421E27B2098506F00A4C208 /* AddController.swift in Sources */,

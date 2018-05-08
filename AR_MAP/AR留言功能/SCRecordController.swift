@@ -17,8 +17,12 @@ class SCRecordController: UIViewController {
         sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
         sceneView.showsStatistics = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.addNode()
+//            self.addNode()
             self.addGesture()
+            
+            for _ in 0..<100 {
+                self.addNode()
+            }
         }
     }
     
@@ -48,6 +52,8 @@ class SCRecordController: UIViewController {
     
     private lazy var configuration = ARWorldTrackingConfiguration()
     
+    private lazy var positionManager = SCPositionManager()
+    
 }
 
 // MARK: - gesture
@@ -68,6 +74,7 @@ private extension SCRecordController {
     @objc func selectNodeTapAction(gesture: UITapGestureRecognizer) {
         let point = gesture.location(in: sceneView)
         let results = sceneView.hitTest(point, options: [SCNHitTestOption.boundingBoxOnly : true, SCNHitTestOption.firstFoundOnly: true])
+        print(results.count)
         if let node = results.first?.node {
             // 选中结点
             selectNode = node
@@ -113,19 +120,19 @@ private extension SCRecordController {
 private extension SCRecordController {
     func addNode() {
         let emptyNode = SCNNode()
-        emptyNode.transform = randomTransfrom(distance: 1)
+        emptyNode.transform = positionManager.randomTransfrom() //randomTransfrom() //randomTransfrom(distance: 1)
         
         let box = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
         let color: UIColor = #colorLiteral(red: 0.3411764706, green: 0.9803921569, blue: 1, alpha: 1)
         box.materials.first?.diffuse.contents = color
-        box.materials.first?.transparency = 0.5
+//        box.materials.first?.transparency = 0.5
         let node = SCNNode(geometry: box)
         
         node.position = emptyNode.position
         print(node.position)
         sceneView.scene.rootNode.addChildNode(node)
         
-        randomAction(node: node)
+//        randomAction(node: node)
     }
     
     func selectAction(node: SCNNode) {
@@ -173,6 +180,26 @@ private extension SCRecordController {
         let xRotation = SCNMatrix4MakeRotation(Float.pi * randNumX, 1, 0, 0)
         let yRotation = SCNMatrix4MakeRotation(Float.pi * randNumY, 0, 1, 0)
         return SCNMatrix4Mult(SCNMatrix4Mult(translation, xRotation), yRotation)
+    }
+    
+    // 给定位置的随机
+    func randomTransfrom() -> SCNMatrix4 {
+        let xCount: Float = 20.0
+        let yCount: Float = 20.0
+        let xScale = 2 * Float.pi / xCount
+        let yScale = 2 * Float.pi / yCount
+        // 需要0到xCount-1的一个随机数
+        let randNumX = Float(arc4random() % 20)
+        let randNumY = Float(arc4random() % 20)
+        // 计算出旋转矩阵
+        let translation = SCNMatrix4Translate(SCNMatrix4Identity, 0, 0, 1)
+        let xRotation = SCNMatrix4MakeRotation(xScale * randNumX, 1, 0, 0)
+        let yRotation = SCNMatrix4MakeRotation(yScale * randNumY, 0, 1, 0)
+        let transfrom = SCNMatrix4Mult(SCNMatrix4Mult(translation, xRotation), yRotation)
+        // debug print
+        print("randNumX: \(randNumX) ; randNumY: \(randNumY)")
+        print("transfrom: \(transfrom)")
+        return transfrom
     }
     
 }
