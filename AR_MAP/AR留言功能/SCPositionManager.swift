@@ -28,6 +28,10 @@ class SCPositionManager {
         return transfrom
     }
     
+    deinit {
+        print("SCPositionManager deinit")
+    }
+    
     // MARK: - private
     private let xScale =  Float.pi / Float(zCount)
     private let yScale =  Float.pi / Float(yCount)

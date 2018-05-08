@@ -36,6 +36,10 @@ class SCRecordController: UIViewController {
         sceneView.session.pause()
     }
     
+    deinit {
+        print("SCRecordController deinit")
+    }
+    
     // MARK: - show view relate
     private var recordView: SCRecordView?
     
@@ -53,6 +57,8 @@ class SCRecordController: UIViewController {
     private lazy var configuration = ARWorldTrackingConfiguration()
     
     private lazy var positionManager = SCPositionManager()
+    
+    private var bodyArray = [SCNNode]()
     
 }
 
@@ -132,6 +138,7 @@ private extension SCRecordController {
         print(node.position)
         sceneView.scene.rootNode.addChildNode(node)
         
+//        bodyArray.append(no)
 //        randomAction(node: node)
     }
     
