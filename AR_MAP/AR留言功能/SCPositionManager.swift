@@ -32,6 +32,7 @@ class SCPositionManager {
     private let xScale =  Float.pi / Float(xCount)
     private let yScale =  Float.pi / Float(yCount)
     
+    /// xy集合
     private lazy var xySet: Set<Point> = {
         var set = Set<Point>()
         for i in 0..<xCount {
@@ -42,6 +43,7 @@ class SCPositionManager {
         return set
     }()
     
+    /// xy数组
     private lazy var xyArray: Array<Point> = {
         var array = Array<Point>()
         for i in 0..<xCount {
@@ -53,6 +55,7 @@ class SCPositionManager {
         return array
     }()
     
+    /// 在数组拿
     private func getXYFromArray() -> Point {
         if xyArray.isEmpty {
             print("空了啊")
@@ -62,6 +65,7 @@ class SCPositionManager {
         }
     }
     
+    /// 在集合拿
     private func getXYFromSet() -> Point {
         if xySet.isEmpty {
             print("空了啊")
@@ -73,6 +77,7 @@ class SCPositionManager {
 }
 
 private struct Point: Hashable {
+    /// 为了使用集合遵循的Hashable
     var hashValue: Int {
         return "\(x),\(y)".hashValue
     }
@@ -85,7 +90,9 @@ private struct Point: Hashable {
     let y: Int
 }
 
+// MARK: - Array extension
 extension Array {
+    /// 乱序数组
     public mutating func shuffle() {
         var list = self
         for index in 0..<list.count {
