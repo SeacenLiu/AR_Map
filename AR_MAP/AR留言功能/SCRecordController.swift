@@ -20,7 +20,7 @@ class SCRecordController: UIViewController {
 //            self.addNode()
             self.addGesture()
             
-            for _ in 0..<100 {
+            for _ in 0..<10 {
                 self.addNode()
             }
         }

@@ -43,13 +43,14 @@ class SCPositionManager {
     }()
     
     private lazy var xyArray: Array<Point> = {
-        var set = Array<Point>()
+        var array = Array<Point>()
         for i in 0..<xCount {
             for j in 0..<yCount {
-                set.append(Point(x: i, y: j))
+                array.append(Point(x: i, y: j))
             }
         }
-        return set
+        array.shuffle()
+        return array
     }()
     
     private func getXYFromArray() -> Point {
@@ -82,8 +83,17 @@ private struct Point: Hashable {
     
     let x: Int
     let y: Int
-    
-//    init(x: Float, y: Float) {
-//        self.init(x: x, y: y)
-//    }
+}
+
+extension Array {
+    public mutating func shuffle() {
+        var list = self
+        for index in 0..<list.count {
+            let newIndex = Int(arc4random_uniform(UInt32(list.count-index))) + index
+            if index != newIndex {
+                list.swapAt(index, newIndex)
+            }
+        }
+        self = list
+    }
 }
